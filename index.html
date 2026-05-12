@@ -3,219 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Sumin</title>
-    <!-- 구글 폰트 & 아이콘 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>KIM SUMIN | Portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap');
+        
         :root {
-            --primary-color: #2563eb;
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
+            --bg: #0a0a0a;
+            --accent: #00e5ff;
+            --text: #ffffff;
+            --muted: #888888;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Noto Sans KR', sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Pretendard', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text);
+            line-height: 1.5;
         }
 
-        /* 헤더 */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
         header {
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            text-align: center;
         }
+        .section-label { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-title { font-size: 6rem; font-weight: 900; line-height: 0.9; letter-spacing: -4px; }
+        .hero-title span { color: var(--accent); }
+        .hero-desc { margin-top: 30px; font-size: 1.2rem; color: var(--muted); max-width: 500px; }
 
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        header p { font-size: 1.2rem; opacity: 0.8; }
-
-        /* 섹션 공통 */
-        section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
-        h2 { font-size: 2rem; border-left: 5px solid var(--primary-color); padding-left: 15px; margin-bottom: 40px; }
-
-        /* 프로젝트 카드 */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { margin-bottom: 10px; color: var(--primary-color); }
-        .tags { margin-top: 15px; }
-        .tag {
-            display: inline-block;
-            background: #e2e8f0;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-        }
-
-        /* 컨택트 */
-        .contact { text-align: center; background: #fff; }
+        section { padding: 150px 0; border-top: 1px solid #222; }
         
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #64748b; }
+        .project-item { display: flex; gap: 80px; margin-bottom: 120px; }
+        .project-num { font-size: 1.5rem; font-weight: 900; color: #333; }
+        .project-info { flex: 1; }
+        .project-info h3 { font-size: 3.5rem; margin-bottom: 25px; font-weight: 900; }
+        .project-info p { font-size: 1.15rem; color: var(--muted); margin-bottom: 35px; max-width: 650px; line-height: 1.8; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
+        .tag { border: 1px solid #333; padding: 6px 16px; border-radius: 4px; font-size: 0.85rem; color: #aaa; }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2); }
+
+        .contact-section { padding: 150px 0; border-top: 1px solid #222; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-info h2 { font-size: 4rem; font-weight: 900; margin-bottom: 30px; }
+        .contact-links p { font-size: 1.5rem; margin-bottom: 15px; }
+        .contact-links a { color: var(--text); text-decoration: none; border-bottom: 2px solid var(--accent); transition: 0.3s; }
+        .contact-links a:hover { color: var(--accent); }
+
+        footer { padding: 60px 0; border-top: 1px solid #111; text-align: center; color: #444; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <style>
-        /* 기존 스타일에 추가 및 수정 */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; /* 중앙 정렬로 변경 */
-            background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
+    <div class="container">
+        <!-- 첫 화면 -->
+        <header>
+            <div>
+                <p class="section-label">Backend Developer</p>
+                <h1 class="hero-title">KIM<br><span>SUMIN</span></h1>
+                <p class="hero-desc">
+                    다양한 도메인 실무 경험을 기반으로 비즈니스 로직을 이해하고,<br>
+                    견고한 백엔드 시스템을 설계하는 데 집중합니다.
+                </p>
+            </div>
+        </header>
 
-        /* 배경에 은은한 그리드 효과 */
-        header::before {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transform: rotate(15deg);
-            z-index: 0;
-        }
-
-        .hero-content {
-            z-index: 1;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-title { 
-            font-size: clamp(3rem, 10vw, 5rem); 
-            line-height: 1.2; 
-            letter-spacing: -2px;
-        }
-
-        .hero-tagline {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--muted);
-            font-size: 0.8rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-            40% {transform: translateY(-10px) translateX(-50%);}
-            60% {transform: translateY(-5px) translateX(-50%);}
-        }
-    </style>
-
-   <header>
-    <div class="hero-content">
-        <!-- 이름과 직무만 명확하게 -->
-        <h1 class="hero-title" style="margin-bottom: 20px;">
-            <span>이수민</span><br>
-            Backend Developer
-        </h1>
-        
-        <!-- 실무 경험과 지향점만 담백하게 -->
-        <p class="hero-sub" style="margin: 0 auto; max-width: 600px; line-height: 1.6; font-size: 1.1rem; color: #cbd5e1;">
-            다양한 도메인에서의 실무 경험을 바탕으로<br>
-            비즈니스 로직을 안정적인 시스템으로 구현하는 데 집중합니다.
-        </p>
-        
-        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 40px;">
-            <a href="#projects" class="contact-btn" style="padding: 10px 20px; font-size: 0.9rem;">프로젝트 확인</a>
-            <a href="mailto:sumin1003@example.com" class="contact-btn" style="background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 10px 20px; font-size: 0.9rem;">이메일 연락</a>
-        </div>
-    </div>
-    <div class="scroll-indicator">SCROLL DOWN</div>
-</header>
-    
-    <section id="about">
-        <h2>About Me</h2>
-        <p>금융 및 행정 분야의 실무 경험을 바탕으로, 비즈니스 로직에 대한 깊은 이해도를 가진 개발자입니다.</p>
-        <p style="margin-top: 10px;">최근에는 <strong>MSA(Microservices Architecture)</strong> 환경에서의 데이터 정합성과 실시간 알림 시스템 구축에 집중하고 있습니다.</p>
-    </section>
-
-    <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="grid">
-                <!-- Lumina 프로젝트 -->
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h3>Lumina (MSA)</h3>
-                        <span class="tag" style="background: var(--accent); color: var(--bg);">Core Project</span>
-                    </div>
-                    <p><strong>MSA(Microservices Architecture)</strong> 기반의 팬덤 커머스 플랫폼. 각 서비스 간 독립성을 확보하고, Redis 원자적 연산을 이용한 선착순 예약 엔진 및 RabbitMQ 기반 비동기 메시징 시스템을 구축하여 시스템 안정성을 극대화했습니다.</p>
+        <!-- 프로젝트 -->
+        <section id="projects">
+            <p class="section-label">Projects</p>
+            
+            <!-- 01 Lumina -->
+            <div class="project-item">
+                <div class="project-num">01</div>
+                <div class="project-info">
+                    <h3>Lumina</h3>
+                    <p>
+                        <strong>MSA(Microservices Architecture)</strong> 기반의 팬덤 커머스 플랫폼입니다. 
+                        Redis 원자적 연산을 이용한 선착순 예약 엔진과 RabbitMQ 비동기 메시징을 구축하여 대규모 트래픽 분산과 데이터 정합성을 확보했습니다.
+                    </p>
                     <div class="tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express</span>
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">RabbitMQ</span>
+                        <span class="tag">Node.js</span><span class="tag">Express</span>
+                        <span class="tag">Spring Boot</span><span class="tag">Redis</span><span class="tag">RabbitMQ</span>
                     </div>
-                    <!-- 포트폴리오 연결 버튼 -->
-                    <a href="https://drive.google.com/file/d/1ujKJxbHDbxI8FTYmIkRyA2Mpr3FKz6zR/view?usp=drive_link" target="_blank" class="contact-btn" style="margin-top: 20px; font-size: 0.8rem; padding: 8px 16px;">상세 포트폴리오 보기</a>
+                    <a href="여기에_링크_넣어" target="_blank" class="btn">포트폴리오 상세보기</a>
                 </div>
+            </div>
 
-                <!-- CampUS 프로젝트 -->
-                <div class="card">
+            <!-- 02 CampUS -->
+            <div class="project-item">
+                <div class="project-num">02</div>
+                <div class="project-info">
                     <h3>CampUS</h3>
-                    <p>대학 전용 포털 서비스. Spring Boot 환경에서 <strong>SSE(Server-Sent Events)</strong> 프로토콜을 활용한 실시간 학사 공지 및 알림 시스템을 구현하여 사용자 경험을 개선했습니다.</p>
+                    <p>
+                        <strong>대학 포털, 에브리타임(커뮤니티), 학사관리</strong> 기능을 하나로 통합한 올인원 플랫폼입니다[cite: 1]. 
+                        Spring Boot 기반으로 복잡한 학사 행정 로직을 구현하였으며, <strong>SSE</strong>를 활용해 실시간 학사 공지 및 개인화 알림을 제공합니다[cite: 1].
+                    </p>
                     <div class="tags">
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">SSE</span>
+                        <span class="tag">Spring Boot</span><span class="tag">SSE</span><span class="tag">Integrated System</span>
                     </div>
-                    <!-- 포트폴리오 연결 버튼 -->
-                    <a href="https://drive.google.com/file/d/1GN-HrvgjdCbqH0deaHypXM27cSdxEboV/view?usp=drive_link" target="_blank" class="contact-btn" style="margin-top: 20px; font-size: 0.8rem; padding: 8px 16px;">상세 포트폴리오 보기</a>
+                    <a href="여기에_링크_넣어" target="_blank" class="btn">포트폴리오 상세보기</a>
                 </div>
             </div>
         </section>
 
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>이메일: oksm1003@gmail.com</p>
-        <p>GitHub: <a href="https://github.com/sumin1003" style="color: var(--primary-color);">github.com/sumin1003</a></p>
-    </section>
+        <!-- 컨택트 섹션 -->
+        <section class="contact-section">
+            <p class="section-label">Get In Touch</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Let's Talk.</h2>
+                </div>
+                <div class="contact-links">
+                    <p>Email: <a href="mailto:oksm1003@gmail.com">oksm1003@gmail.com</a></p>
+                    <p>GitHub: <a href="https://github.com/sumin1003" target="_blank">github.com/sumin1003</a></p>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        &copy; 2026 Sumin. All rights reserved.
-    </footer>
+        <footer>
+            &copy; 2026 KIM SUMIN. All rights reserved.
+        </footer>
+    </div>
 
 </body>
 </html>
