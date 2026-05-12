@@ -21,7 +21,10 @@
             color: var(--text);
             line-height: 1.5;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+        }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
         /* 히어로 섹션 - 잘림 방지 수정 */
@@ -46,6 +49,10 @@
         }
 
         .scroll-down {
+            text-decoration: none; /* 밑줄 제거 */
+            cursor: pointer;      /* 마우스 포인터 모양 */
+            
+            /* 기존 스타일 유지 */
             position: absolute;
             bottom: 40px;
             left: 0;
@@ -167,7 +174,7 @@
                     견고한 백엔드 시스템을 설계하는 데 집중합니다.
                 </p>
             </div>
-            <div class="scroll-down">SCROLL DOWN</div>
+            <a href="#projects" class="scroll-down">SCROLL DOWN</a>
         </header>
 
         <section id="projects">
