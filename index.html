@@ -24,23 +24,60 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
+        /* 히어로 섹션 */
         header {
             height: 100vh;
             display: flex;
             align-items: center;
+            position: relative; /* 스크롤바 위치 고정을 위해 필요 */
         }
         .section-label { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
         .hero-title { font-size: 6rem; font-weight: 900; line-height: 0.9; letter-spacing: -4px; }
         .hero-title span { color: var(--accent); }
-        .hero-desc { margin-top: 30px; font-size: 1.2rem; color: var(--muted); max-width: 500px; }
+        
+        /* [수정] 줄바꿈 방지 및 텍스트 정렬 */
+        .hero-desc { 
+            margin-top: 30px; 
+            font-size: 1.2rem; 
+            color: var(--muted); 
+            max-width: 600px; 
+            word-break: keep-all; /* 단어 단위로 줄바꿈하여 '이해하고,'가 잘리지 않게 함 */
+        }
 
+        /* [추가] 스크롤 다운 안내 및 깜빡임 애니메이션 */
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 40px; /* 왼쪽 정렬 레이아웃에 맞춰 배치 */
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .scroll-down::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* 프로젝트 섹션 */
         section { padding: 150px 0; border-top: 1px solid #222; }
         
         .project-item { display: flex; gap: 80px; margin-bottom: 120px; }
         .project-num { font-size: 1.5rem; font-weight: 900; color: #333; }
         .project-info { flex: 1; }
         .project-info h3 { font-size: 3.5rem; margin-bottom: 25px; font-weight: 900; }
-        .project-info p { font-size: 1.15rem; color: var(--muted); margin-bottom: 35px; max-width: 650px; line-height: 1.8; }
+        .project-info p { font-size: 1.15rem; color: var(--muted); margin-bottom: 35px; max-width: 650px; line-height: 1.8; word-break: keep-all; }
 
         .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
         .tag { border: 1px solid #333; padding: 6px 16px; border-radius: 4px; font-size: 0.85rem; color: #aaa; }
@@ -57,6 +94,7 @@
         }
         .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2); }
 
+        /* 컨택트 섹션 */
         .contact-section { padding: 150px 0; border-top: 1px solid #222; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .contact-info h2 { font-size: 4rem; font-weight: 900; margin-bottom: 30px; }
@@ -70,23 +108,21 @@
 <body>
 
     <div class="container">
-        <!-- 첫 화면 -->
         <header>
             <div>
                 <p class="section-label">Backend Developer</p>
-                <h1 class="hero-title">KIM<br><span>SUMIN</span></h1>
+                <h1 class="hero-title"><span>SUMIN</span><br>KIM</h1>
                 <p class="hero-desc">
                     다양한 도메인 실무 경험을 기반으로 비즈니스 로직을 이해하고,<br>
                     견고한 백엔드 시스템을 설계하는 데 집중합니다.
                 </p>
             </div>
+            <div class="scroll-down">SCROLL DOWN</div>
         </header>
 
-        <!-- 프로젝트 -->
         <section id="projects">
             <p class="section-label">Projects</p>
             
-            <!-- 01 Lumina -->
             <div class="project-item">
                 <div class="project-num">01</div>
                 <div class="project-info">
@@ -103,14 +139,13 @@
                 </div>
             </div>
 
-            <!-- 02 CampUS -->
             <div class="project-item">
                 <div class="project-num">02</div>
                 <div class="project-info">
                     <h3>CampUS</h3>
                     <p>
-                        <strong>대학 포털, 에브리타임(커뮤니티), 학사관리</strong> 기능을 하나로 통합한 올인원 플랫폼입니다[cite: 1]. 
-                        Spring Boot 기반으로 복잡한 학사 행정 로직을 구현하였으며, <strong>SSE</strong>를 활용해 실시간 학사 공지 및 개인화 알림을 제공합니다[cite: 1].
+                        <strong>대학 포털, 에브리타임(커뮤니티), 학사관리</strong> 기능을 하나로 통합한 올인원 플랫폼입니다. 
+                        Spring Boot 기반으로 복잡한 학사 행정 로직을 구현하였으며, <strong>SSE</strong>를 활용해 실시간 학사 공지 및 개인화 알림을 제공합니다.
                     </p>
                     <div class="tags">
                         <span class="tag">Spring Boot</span><span class="tag">SSE</span><span class="tag">Integrated System</span>
@@ -120,7 +155,6 @@
             </div>
         </section>
 
-        <!-- 컨택트 섹션 -->
         <section class="contact-section">
             <p class="section-label">Get In Touch</p>
             <div class="contact-grid">
