@@ -29,26 +29,24 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            position: relative; /* 스크롤바 위치 고정을 위해 필요 */
+            position: relative;
         }
         .section-label { font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
         .hero-title { font-size: 6rem; font-weight: 900; line-height: 0.9; letter-spacing: -4px; }
         .hero-title span { color: var(--accent); }
         
-        /* [수정] 줄바꿈 방지 및 텍스트 정렬 */
         .hero-desc { 
             margin-top: 30px; 
             font-size: 1.2rem; 
             color: var(--muted); 
             max-width: 600px; 
-            word-break: keep-all; /* 단어 단위로 줄바꿈하여 '이해하고,'가 잘리지 않게 함 */
+            word-break: keep-all; 
         }
 
-        /* [추가] 스크롤 다운 안내 및 깜빡임 애니메이션 */
         .scroll-down {
             position: absolute;
             bottom: 40px;
-            left: 40px; /* 왼쪽 정렬 레이아웃에 맞춰 배치 */
+            left: 0;
             font-size: 0.8rem;
             color: var(--accent);
             letter-spacing: 2px;
@@ -70,9 +68,10 @@
             background: var(--accent);
         }
 
-        /* 프로젝트 섹션 */
+        /* 공통 섹션 스타일 */
         section { padding: 150px 0; border-top: 1px solid #222; }
         
+        /* 프로젝트 스타일 */
         .project-item { display: flex; gap: 80px; margin-bottom: 120px; }
         .project-num { font-size: 1.5rem; font-weight: 900; color: #333; }
         .project-info { flex: 1; }
@@ -94,7 +93,46 @@
         }
         .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2); }
 
-        /* 컨택트 섹션 */
+        /* 기술 스택 스타일 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .skill-category {
+            background: #111;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+        .skill-category:hover {
+            border-color: var(--accent);
+            background: #161616;
+        }
+        .skill-category h4 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .skill-list li {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* 컨택트 스타일 */
         .contact-section { padding: 150px 0; border-top: 1px solid #222; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .contact-info h2 { font-size: 4rem; font-weight: 900; margin-bottom: 30px; }
@@ -111,7 +149,7 @@
         <header>
             <div>
                 <p class="section-label">Backend Developer</p>
-                <h1 class="hero-title"><span>SUMIN</span><br>KIM</h1>
+                <h1 class="hero-title">KIM<br><span>SUMIN</span></h1>
                 <p class="hero-desc">
                     다양한 도메인 실무 경험을 기반으로 비즈니스 로직을 이해하고,<br>
                     견고한 백엔드 시스템을 설계하는 데 집중합니다.
@@ -151,6 +189,58 @@
                         <span class="tag">Spring Boot</span><span class="tag">SSE</span><span class="tag">Integrated System</span>
                     </div>
                     <a href="https://drive.google.com/file/d/1GN-HrvgjdCbqH0deaHypXM27cSdxEboV/view?usp=drive_link" target="_blank" class="btn">포트폴리오 상세보기</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <p class="section-label">Technical Expertise</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Backend & Languages</h4>
+                    <ul class="skill-list">
+                        <li><strong>Java</strong> (Spring, Spring Boot, JSP)</li>
+                        <li><strong>Node.js</strong> (Express, Prisma), <strong>Python</strong> (Flask)</li>
+                        <li><strong>SQL</strong> (MyBatis, JPA/Hibernate, Lua)</li>
+                        <li><strong>Security</strong> (Spring Security, JWT)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Frontend & Design</h4>
+                    <ul class="skill-list">
+                        <li><strong>HTML5 / CSS / JavaScript</strong></li>
+                        <li><strong>React</strong>, JQuery, Ajax, Thymeleaf</li>
+                        <li><strong>UI/UX Design</strong> (Figma, Bootstrap)</li>
+                        <li><strong>Logic Design</strong> (ExERD)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Infra & DevOps</h4>
+                    <ul class="skill-list">
+                        <li><strong>Cloud:</strong> AWS(EC2), GCP</li>
+                        <li><strong>Container:</strong> Docker, Docker Compose</li>
+                        <li><strong>Server:</strong> Nginx, Apache Tomcat</li>
+                        <li><strong>CI/CD:</strong> Git Action, Github</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Data & AI / Messaging</h4>
+                    <ul class="skill-list">
+                        <li><strong>Databases:</strong> MySQL, Oracle, PostgreSQL, Redis</li>
+                        <li><strong>Messaging:</strong> RabbitMQ, MSA Architecture</li>
+                        <li><strong>AI/Data:</strong> Spring AI, TensorFlow, Selenium</li>
+                        <li><strong>Library:</strong> BeautifulSoup, Matplotlib</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category" style="grid-column: 1 / -1;">
+                    <h4>Professional Tools</h4>
+                    <p style="color: #888; font-size: 0.9rem;">
+                        VS Code, STS 4, IntelliJ, PyCharm, Jupyter Notebook, DBeaver, Postman, MobaXterm, PuTTY, Virtual Box, vi/nano Editor
+                    </p>
                 </div>
             </div>
         </section>
