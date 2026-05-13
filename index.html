@@ -255,6 +255,13 @@
         }
         .fade.on { opacity: 1; transform: none; }
 
+        .hero-scroll span[data-ko] {
+            animation: blink-color 2s infinite;
+        }
+        @keyframes blink-color {
+            0%, 100% { color: var(--accent); }
+            50% { color: var(--muted); }
+        }
         @media (max-width: 640px) {
             .wrap { padding: 0 24px; }
             .lang-bar { padding: 16px 24px; }
@@ -279,7 +286,7 @@
     <header class="hero">
         <p class="hero-label" data-ko="Full-Stack Developer" data-en="Full-Stack Developer"></p>
         <h1 class="hero-name">
-            <span class="outline">SUMIN</span><br>KIM
+            <span class="outline">KIM</span><br>SUMIN
         </h1>
         <p class="hero-desc"
            data-ko="다양한 도메인의 실무 경험을 기반으로<br>비즈니스 로직을 이해하고,<br>견고한 백엔드 시스템을 설계합니다."
