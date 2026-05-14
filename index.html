@@ -17,11 +17,11 @@
     <style>
         :root {
             --bg:        #0C0A08;
-            --text:      #EDE8E0;
-            --muted:     #6B6560;
-            --line:      #222018;
-            --accent:    #C9F542;
-            --accent-bg: rgba(201,245,66,0.06);
+            --text:      #F2EDE4;
+            --muted:     #8C8680;
+            --line:      #282420;
+            --accent:    #D4FF00;
+            --accent-bg: rgba(212,255,0,0.07);
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -68,20 +68,20 @@
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center;
-            padding: 130px 0 80px;
+            padding: 100px 0 60px;
             position: relative;
         }
         .hero-label {
             font-family: 'Syne', sans-serif;
-            font-size: 0.68rem; font-weight: 700;
-            letter-spacing: 4px; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 36px;
+            font-size: 1.1rem; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 24px;
         }
         .hero-name {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3.8rem, 8vw, 7rem);
+            font-size: clamp(2.8rem, 5.5vw, 4.8rem);
             font-weight: 800; line-height: 0.92;
-            letter-spacing: -2px; margin-bottom: 52px;
+            letter-spacing: -2px; margin-bottom: 32px;
         }
         .hero-name .outline {
             color: transparent;
@@ -107,18 +107,18 @@
         .hero-scroll:hover .hero-scroll-line { width: 56px; }
 
         /* 섹션 공통 */
-        .section { padding: 96px 0; border-top: 1px solid var(--line); }
+        .section { padding: 64px 0; border-top: 1px solid var(--line); }
         .eyebrow {
             font-family: 'Syne', sans-serif;
             font-size: 0.65rem; font-weight: 700;
             letter-spacing: 4px; text-transform: uppercase;
-            color: var(--muted); margin-bottom: 60px;
+            color: var(--muted); margin-bottom: 40px;
         }
 
         /* 프로젝트 */
         .proj {
             display: grid; grid-template-columns: 56px 1fr;
-            gap: 0 44px; padding: 44px 0;
+            gap: 0 44px; padding: 32px 0;
             border-bottom: 1px solid var(--line);
             transition: background 0.25s;
             border-radius: 2px;
@@ -142,7 +142,7 @@
         }
         .proj-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.35rem, 2.2vw, 1.9rem);
             font-weight: 800; line-height: 1; letter-spacing: -0.5px;
         }
         .proj-stack {
@@ -152,10 +152,10 @@
         .proj-desc {
             font-size: 0.97rem; font-weight: 300;
             color: var(--muted); max-width: 580px;
-            line-height: 1.8; margin-bottom: 26px;
+            line-height: 1.8; margin-bottom: 20px;
         }
         .proj-desc strong { color: var(--text); font-weight: 500; }
-        .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
         .tag {
             font-size: 0.7rem; padding: 3px 10px;
             border: 1px solid var(--line); color: var(--muted);
@@ -175,7 +175,7 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 44px 60px;
+            gap: 32px 48px;
         }
         .skill-cat h4 {
             font-family: 'Syne', sans-serif;
@@ -197,7 +197,7 @@
         }
         .skill-cat li strong { color: var(--text); font-weight: 500; }
         .tools-row {
-            margin-top: 60px; padding-top: 36px;
+            margin-top: 40px; padding-top: 28px;
             border-top: 1px solid var(--line);
         }
         .tools-label {
@@ -206,10 +206,10 @@
             letter-spacing: 3px; text-transform: uppercase;
             color: var(--muted); margin-bottom: 14px;
         }
-        .tools-text { font-size: 0.86rem; color: #5A5550; line-height: 2.1; }
+        .tools-text { font-size: 0.86rem; color: #6A6560; line-height: 2.1; }
 
         /* 컨택트 */
-        .contact { padding: 96px 0 72px; border-top: 1px solid var(--line); }
+        .contact { padding: 64px 0 52px; border-top: 1px solid var(--line); }
         .contact-inner {
             display: flex; align-items: flex-end;
             justify-content: space-between;
@@ -447,7 +447,6 @@
         document.querySelectorAll('[data-ko][data-en]').forEach(el => {
             el.innerHTML = el.getAttribute('data-' + l) || '';
         });
-        /* strong 요소 안 data 처리 */
         document.querySelectorAll('strong[data-ko][data-en]').forEach(el => {
             el.textContent = el.getAttribute('data-' + l) || '';
         });
