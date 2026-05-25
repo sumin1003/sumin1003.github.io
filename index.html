@@ -16,12 +16,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg:        #0C0A08;
-            --text:      #F2EDE4;
-            --muted:     #8C8680;
-            --line:      #282420;
-            --accent:    #D4FF00;
-            --accent-bg: rgba(212,255,0,0.07);
+            --bg:        #F5F1EB;
+            --text:      #0E0C0A;
+            --muted:     #8A8580;
+            --line:      #DDD7CE;
+            --accent:    #C44B2A;
+            --accent-bg: rgba(196,75,42,0.07);
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -46,7 +46,7 @@
             display: flex; align-items: center;
             border: 1px solid var(--line);
             border-radius: 2px; overflow: hidden;
-            background: rgba(12,10,8,0.75);
+            background: rgba(245,241,235,0.85);
             backdrop-filter: blur(6px);
         }
         .lang-btn {
@@ -57,7 +57,7 @@
             border: none; background: transparent;
             color: var(--muted); transition: all 0.2s;
         }
-        .lang-btn.active { background: var(--accent); color: #0C0A08; }
+        .lang-btn.active { background: var(--accent); color: #F5F1EB; }
         .lang-btn:not(.active):hover { color: var(--text); }
         .lang-sep { width: 1px; align-self: stretch; background: var(--line); }
 
@@ -187,7 +187,7 @@
         }
         .skill-cat ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
         .skill-cat li {
-            font-size: 0.88rem; color: #8A857F;
+            font-size: 0.88rem; color: var(--muted);
             padding-left: 13px; position: relative; line-height: 1.5;
         }
         .skill-cat li::before {
@@ -206,7 +206,7 @@
             letter-spacing: 3px; text-transform: uppercase;
             color: var(--muted); margin-bottom: 14px;
         }
-        .tools-text { font-size: 0.86rem; color: #6A6560; line-height: 2.1; }
+        .tools-text { font-size: 0.86rem; color: #7A7570; line-height: 2.1; }
 
         /* 컨택트 */
         .contact { padding: 64px 0 52px; border-top: 1px solid var(--line); }
