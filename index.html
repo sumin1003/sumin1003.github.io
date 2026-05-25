@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIM SUMIN | Portfolio</title>
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKZDXZ1JHJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -18,7 +17,7 @@
         :root {
             --bg:        #F5F1EB;
             --text:      #0E0C0A;
-            --muted:     #8A8580;
+            --muted:     #5A5550;
             --line:      #DDD7CE;
             --accent:    #C44B2A;
             --accent-bg: rgba(196,75,42,0.07);
@@ -33,7 +32,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 언어 토글 */
         .lang-bar {
             position: fixed; top: 0; left: 0; right: 0;
             z-index: 200;
@@ -61,14 +59,12 @@
         .lang-btn:not(.active):hover { color: var(--text); }
         .lang-sep { width: 1px; align-self: stretch; background: var(--line); }
 
-        /* 래퍼 */
         .wrap { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
 
-        /* 히어로 */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center;
-            padding: 100px 0 60px;
+            padding: 80px 0 40px;
             position: relative;
         }
         .hero-label {
@@ -106,8 +102,7 @@
         }
         .hero-scroll:hover .hero-scroll-line { width: 56px; }
 
-        /* 섹션 공통 */
-        .section { padding: 64px 0; border-top: 1px solid var(--line); }
+        .section { padding: 40px 0; border-top: 1px solid var(--line); }
         .eyebrow {
             font-family: 'Syne', sans-serif;
             font-size: 0.65rem; font-weight: 700;
@@ -115,7 +110,6 @@
             color: var(--muted); margin-bottom: 40px;
         }
 
-        /* 프로젝트 */
         .proj {
             display: grid; grid-template-columns: 56px 1fr;
             gap: 0 44px; padding: 32px 0;
@@ -171,7 +165,6 @@
         }
         .proj-link:hover { gap: 16px; }
 
-        /* 스킬 */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -206,10 +199,9 @@
             letter-spacing: 3px; text-transform: uppercase;
             color: var(--muted); margin-bottom: 14px;
         }
-        .tools-text { font-size: 0.86rem; color: #7A7570; line-height: 2.1; }
+        .tools-text { font-size: 0.86rem; color: var(--muted); line-height: 2.1; }
 
-        /* 컨택트 */
-        .contact { padding: 64px 0 52px; border-top: 1px solid var(--line); }
+        .contact { padding: 40px 0 36px; border-top: 1px solid var(--line); }
         .contact-inner {
             display: flex; align-items: flex-end;
             justify-content: space-between;
@@ -217,7 +209,7 @@
         }
         .contact-big {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 9vw, 7rem);
+            font-size: clamp(2rem, 5vw, 3.8rem);
             font-weight: 800; line-height: 0.88;
             letter-spacing: -2px;
         }
@@ -240,7 +232,6 @@
         }
         .clink:hover .clink-val { color: var(--accent); border-color: var(--accent); }
 
-        /* 푸터 */
         footer {
             padding: 28px 0;
             border-top: 1px solid var(--line);
@@ -248,7 +239,6 @@
             font-size: 0.75rem; color: var(--muted); letter-spacing: 0.3px;
         }
 
-        /* 페이드 */
         .fade {
             opacity: 0; transform: translateY(22px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -282,7 +272,6 @@
 
 <div class="wrap">
 
-    <!-- 히어로 -->
     <header class="hero">
         <p class="hero-label" data-ko="Full-Stack Developer" data-en="Full-Stack Developer"></p>
         <h1 class="hero-name">
@@ -297,7 +286,6 @@
         </a>
     </header>
 
-    <!-- 프로젝트 -->
     <section class="section" id="projects">
         <p class="eyebrow" data-ko="Projects" data-en="Projects"></p>
 
@@ -377,10 +365,9 @@
                    data-en="Visit Site →"></a>
             </div>
         </div>
-        
+
     </section>
 
-    <!-- 스킬 -->
     <section class="section fade" id="skills">
         <p class="eyebrow" data-ko="Technical Skills" data-en="Technical Skills"></p>
         <div class="skills-grid">
@@ -444,7 +431,6 @@
         </div>
     </section>
 
-    <!-- 컨택트 -->
     <div class="contact fade">
         <p class="eyebrow" data-ko="Get In Touch" data-en="Get In Touch"></p>
         <div class="contact-inner">
