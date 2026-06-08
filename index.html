@@ -298,9 +298,9 @@
         }
         .top-nav-logo {
             font-family: 'Syne', sans-serif;
-            font-size: 0.72rem; font-weight: 800;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: var(--text); text-decoration: none;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 4px; text-transform: uppercase;
+            color: var(--accent);
         }
         .top-nav-links {
             display: flex; align-items: center; gap: 32px;
@@ -319,6 +319,7 @@
             border: 1px solid var(--accent) !important;
             padding: 5px 14px;
             border-radius: 2px;
+            text-decoration: none;
             transition: background 0.2s, color 0.2s !important;
         }
         .contact-btn:hover {
@@ -329,18 +330,12 @@
         /* ── 스크롤 인디케이터 ── */
         .scroll-indicator {
             position: fixed; bottom: 32px; right: 48px;
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            display: flex; flex-direction: column; align-items: center; gap: 14px;
             z-index: 100;
-            text-decoration: none;
             animation: fadeInUp 1s 0.5s both;
         }
-        .scroll-indicator span {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase;
-            color: var(--muted);
-        }
         .scroll-line {
-            width: 1px; height: 40px;
+            width: 2px; height: 56px;
             background: linear-gradient(to bottom, var(--accent), transparent);
             animation: scrollPulse 1.5s ease-in-out infinite;
         }
@@ -377,28 +372,27 @@
 <body>
 
 <nav class="top-nav">
-    <a class="top-nav-logo" href="#">KIM SUMIN</a>
-    <div class="top-nav-links">
-        <a href="#contact" class="contact-btn" data-ko="연락하기" data-en="Contact"></a>
-        <div class="lang-toggle">
-            <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
-            <div class="lang-sep"></div>
-            <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-        </div>
+    <p class="top-nav-logo" data-ko="Full-Stack Developer" data-en="Full-Stack Developer"></p>
+    <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
 </nav>
 
-<a class="scroll-indicator" id="scrollIndicator" href="#projects">
-    <span data-ko="SCROLL" data-en="SCROLL"></span>
-    <div class="scroll-line"></div>
-</a>
+<div class="scroll-indicator" id="scrollIndicator">
+    <a href="#contact" class="contact-btn" data-ko="연락하기" data-en="Contact"></a>
+    <a href="#projects" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none;">
+        <span style="font-family:'Syne',sans-serif; font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent);" data-ko="SCROLL" data-en="SCROLL"></span>
+        <div class="scroll-line"></div>
+    </a>
+</div>
 
 <div class="wrap">
 
     <!-- HERO -->
     <header class="hero">
         <div class="hero-left">
-            <p class="hero-label" data-ko="Full-Stack Developer" data-en="Full-Stack Developer"></p>
             <h1 class="hero-name">
                 <span class="outline">SUMIN</span><br>KIM
             </h1>
