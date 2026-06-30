@@ -66,9 +66,10 @@
         font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--accent);
         font-weight:500; margin-bottom:18px;
     }
+    /* 핵심 수정: 소개글 텍스트 크기 축소 (clamp 최댓값을 3.2rem -> 2.5rem으로 변경) */
     .hero-title{
-        font-size:clamp(2.2rem,5vw,3.2rem); font-weight:800; letter-spacing:-1.4px;
-        line-height:1.12; margin-bottom:20px; max-width:680px;
+        font-size:clamp(2.0rem, 4.5vw, 2.5rem); font-weight:800; letter-spacing:-1.0px;
+        line-height:1.25; margin-bottom:20px; max-width:680px;
     }
     .hero-highlight{ color:var(--accent); }
     .hero-desc{ font-size:1.05rem; color:var(--muted); max-width:580px; margin-bottom:28px; }
@@ -76,12 +77,14 @@
     .stat{ display:flex; flex-direction:column; gap:4px; }
     .stat-num{ font-weight:800; font-size:1.3rem; color:var(--accent); }
     .stat-label{ font-size:0.78rem; color:var(--muted); }
+    
+    /* 핵심 수정: 이름 강조 백그라운드 및 텍스트 컬러 변경 (세련된 녹청색 톤) */
     .hero-highlights {
-      /* background-color: #ffe0b2; /* 연한 주황색 배경 */ */
-      color: #e65100;            /* 진한 주황색 글자 */
-      padding: 2px 6px;          /* 여백 설정 */
-      border-radius: 4px;        /* 둥근 모서리 */
-    }        
+      color: #2F5D62;            /* 딥 그린/에메랄드 톤 포인트 컬러 */
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+    }       
 
     /* ── Section ── */
     .section{ padding:56px 0; border-top:1px solid var(--line); }
@@ -336,10 +339,8 @@
     document.getElementById('btn-ko').addEventListener('click', ()=>setLang('ko'));
     document.getElementById('btn-en').addEventListener('click', ()=>setLang('en'));
 
-    // 핵심 주석: 기존 로직을 유지한 채, 초기 구동 시 한글 화면을 보여주도록 이 한 줄만 추가
+    // 핵심 주석: 초기 구동 시 한글 화면 매핑 실행
     setLang('ko'); 
-</script>
-</script>
 </script>
 </body>
 </html>
