@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>KIM SUMIN | Backend Developer</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKZDXZ1JHJ"></script>
 <script>
@@ -20,12 +20,12 @@
         --ink:#15171A;
         --muted:#62666D;
         --line:#E6E4DD;
-        /* 핵심 수정: 포인트 색상을 세련된 오렌지 코랄(#FF5A36) 계열로 변경 */
         --accent:#FF5A36;
         --accent-soft:#FFF0EC;
     }
-    *,*::before,*::after{margin:0;padding:0;box-box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    /* 핵심 수정: 오타 수정 (box-box-sizing -> box-sizing) 및 모바일 스크롤 터치 최적화 */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
     body{
         font-family:'Inter',sans-serif;
         background:var(--bg);
@@ -39,7 +39,7 @@
     /* ── Nav ── */
     .nav{
         position:sticky; top:0; z-index:100;
-        background:rgba(250,250,248,0.92); backdrop-filter:blur(6px);
+        background:rgba(250,250,248,0.92); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
         border-bottom:1px solid var(--line);
     }
     .nav-inner{
@@ -68,8 +68,8 @@
         font-weight:500; margin-bottom:18px;
     }
     .hero-title{
-        font-size:clamp(2.0rem, 4.5vw, 2.5rem); font-weight:800; letter-spacing:-1.0px;
-        line-height:1.25; margin-bottom:20px; max-width:680px;
+        font-size:clamp(1.8rem, 4.5vw, 2.5rem); font-weight:800; letter-spacing:-1.0px;
+        line-height:1.3; margin-bottom:20px; max-width:680px;
     }
     .hero-highlight{ color:var(--accent); }
     .hero-desc{ font-size:1.05rem; color:var(--muted); max-width:580px; margin-bottom:28px; }
@@ -78,7 +78,6 @@
     .stat-num{ font-weight:800; font-size:1.3rem; color:var(--accent); }
     .stat-label{ font-size:0.78rem; color:var(--muted); }
     
-    /* 핵심 수정: 이름 강조 컬러를 오렌지 포인트 컬러와 일치시킴 */
     .hero-highlights {
       color: var(--accent);
       font-weight: 800;
@@ -145,7 +144,6 @@
         display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
     }
     .contact-title{ font-size:1.7rem; font-weight:800; letter-spacing:-0.7px; max-width:360px; }
-    /* 핵심 수정: 하단 컨택트 박스 내부의 강조 텍스트도 오렌지 톤 연하게 세팅 */
     .contact-title em{ font-style:normal; color:#FFA494; }
     .contact-links{ display:flex; flex-direction:column; gap:10px; }
     .clink{ display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; }
@@ -154,6 +152,32 @@
     .clink:hover .clink-val{ color:#FFA494; }
 
     footer{ padding:28px 0; display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted); }
+
+    /* ── 핵심 수정: 모바일/앱 환경을 위한 완벽한 미디어 쿼리 최적화 ── */
+    @media (max-width:760px){
+        .wrap{ padding:0 20px; }
+        .nav-inner{ padding:0 20px; }
+        .hero{ padding:48px 0 40px; }
+        .hero-title br { display: none; } /* 모바일에서 애매한 줄바꿈 제거 */
+        .hero-stats { gap: 20px 28px; }
+        
+        /* 프로젝트 레이아웃을 세로 1열 구조로 전환 */
+        .proj-card{ grid-template-columns:1fr; padding:22px 24px; gap:16px; }
+        .proj-meta{ gap:4px; }
+        .proj-badge{ margin-top:2px; }
+        
+        /* 스킬 그리드를 모바일 해상도에 맞춰 1열 구조로 가독성 확보 */
+        .skills-grid{ grid-template-columns:1fr; gap:12px; }
+        .skill-card{ padding:18px; }
+        .tools-row{ padding:16px; flex-direction:column; gap:8px; }
+        
+        .nav-links{ gap:14px; }
+        .nav-links a:not(.lang-toggle):not(.nav-cta){ display:none; }
+        .contact-box{ padding:32px 24px; flex-direction:column; align-items:flex-start; gap:24px; }
+        .contact-title{ font-size:1.4rem; }
+        
+        footer { flex-direction: column; gap: 8px; align-items: center; text-align: center; }
+    }
 </style>
 </head>
 <body>
