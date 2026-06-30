@@ -12,277 +12,287 @@
         gtag('config', 'G-QKZDXZ1JHJ');
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0D0C0B;
-            --bg2: #161512;
-            --text: #F0EDE7;
-            --muted: #7A756E;
-            --line: #2A2722;
-            --accent: #C44B2A;
-            --accent2: #E8622F;
+            --bg: #14140F;
+            --bg2: #1C1C16;
+            --paper: #ECE6D8;
+            --text: #ECE6D8;
+            --muted: #8E8A7C;
+            --line: #34342A;
+            --accent: #5C6B3F;
+            --accent2: #8FA15C;
+            --rust: #B5602F;
         }
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── Lang toggle (top-nav 안에서 사용) ── */
+        /* ── Lang toggle ── */
         .lang-toggle {
             display: flex; align-items: center;
-            border: 1px solid var(--line);
-            border-radius: 2px; overflow: hidden;
+            border: 2px solid var(--line);
+            border-radius: 0; overflow: hidden;
             background: transparent;
         }
         .lang-btn {
-            padding: 7px 15px;
-            font-family: 'Syne', sans-serif;
-            font-size: 0.68rem; font-weight: 700;
-            letter-spacing: 2px; cursor: pointer;
+            padding: 6px 14px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem; font-weight: 500;
+            letter-spacing: 1px; cursor: pointer;
             border: none; background: transparent;
             color: var(--muted); transition: all 0.2s;
         }
-        .lang-btn.active { background: var(--accent); color: #F0EDE7; }
+        .lang-btn.active { background: var(--accent2); color: #14140F; }
         .lang-btn:not(.active):hover { color: var(--text); }
-        .lang-sep { width: 1px; align-self: stretch; background: var(--line); }
+        .lang-sep { width: 2px; align-self: stretch; background: var(--line); }
 
-        /* ── Wrap ── */
-        .wrap { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
 
         /* ── HERO ── */
         .hero {
-            min-height: 30vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 40px;
-            padding: 72px 0 32px;
-            border-bottom: 1px solid var(--line);
+            min-height: 38vh;
+            padding: 110px 0 0;
+            border-bottom: 4px solid var(--paper);
+            position: relative;
         }
-        .hero-left {}
         .hero-label {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.68rem; font-weight: 700;
-            letter-spacing: 4px; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 16px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent2); margin-bottom: 18px;
             display: flex; align-items: center; gap: 10px;
         }
         .hero-label::before {
-            content: '';
-            display: inline-block;
-            width: 24px; height: 1px;
-            background: var(--accent);
+            content: '●';
+            color: var(--rust);
+            font-size: 0.6rem;
         }
         .hero-name {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 5.5vw, 5.2rem);
-            font-weight: 800; line-height: 0.88;
-            letter-spacing: -3px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3.4rem, 9vw, 7.6rem);
+            font-weight: 400; line-height: 0.86;
+            letter-spacing: -2px;
+            color: var(--paper);
+            text-transform: uppercase;
         }
-        .hero-name .outline {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(240,237,231,0.3);
-        }
-        .hero-right {
-            padding-bottom: 16px;
+        .hero-name .accent-word { color: var(--accent2); }
+        .hero-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+            padding: 28px 0 36px;
+            flex-wrap: wrap;
         }
         .hero-desc {
-            font-size: 1rem; font-weight: 300;
+            font-size: 1rem; font-weight: 400;
             color: var(--muted); line-height: 1.9;
-            border-left: 1px solid var(--line);
-            padding-left: 24px;
+            max-width: 480px;
         }
-
+        .hero-tagbox {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem; letter-spacing: 1px;
+            color: var(--bg);
+            background: var(--accent2);
+            padding: 10px 18px;
+            white-space: nowrap;
+        }
 
         /* ── Section ── */
-        .section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+        .section { padding: 56px 0; border-bottom: 1px solid var(--line); }
         .section-header {
-            display: flex; align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
+            display: flex; align-items: baseline;
+            gap: 16px;
+            margin-bottom: 32px;
         }
         .eyebrow {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.9rem; font-weight: 700;
-            letter-spacing: 4px; text-transform: uppercase;
-            color: var(--muted);
-            display: flex; align-items: center; gap: 12px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.6rem; font-weight: 400;
+            text-transform: uppercase;
+            color: var(--paper);
+            letter-spacing: -0.5px;
         }
         .eyebrow-num {
-            font-size: 0.9rem; color: var(--accent);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem; color: var(--accent2);
+            border: 1px solid var(--line);
+            padding: 3px 9px;
         }
 
         /* ── Projects ── */
         .proj-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
+            gap: 2px;
             background: var(--line);
-            border: 1px solid var(--line);
+            border: 2px solid var(--paper);
         }
         .proj {
             background: var(--bg2);
-            padding: 28px;
+            padding: 30px 26px;
             display: flex; flex-direction: column;
             transition: background 0.25s;
             position: relative;
-            overflow: hidden;
         }
-        .proj::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
-        }
-        .proj:hover { background: #1A1915; }
-        .proj:hover::before { transform: scaleX(1); }
+        .proj:hover { background: #232318; }
         .proj-num {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.63rem; font-weight: 700;
-            color: var(--accent); letter-spacing: 2px;
-            margin-bottom: 20px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem; font-weight: 500;
+            color: var(--rust); letter-spacing: 1px;
+            margin-bottom: 22px;
         }
         .proj-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; font-weight: 600;
-            letter-spacing: 0; margin-bottom: 12px;
-            line-height: 1.2;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.7rem; font-weight: 400;
+            letter-spacing: -0.5px; margin-bottom: 12px;
+            line-height: 1.1; text-transform: uppercase;
+            color: var(--paper);
         }
         .proj-stack {
-            font-size: 0.72rem; color: var(--muted);
-            font-style: italic; margin-bottom: 16px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem; color: var(--accent2);
+            margin-bottom: 16px;
         }
         .proj-desc {
-            font-size: 0.88rem; font-weight: 300;
+            font-size: 0.88rem; font-weight: 400;
             color: var(--muted); line-height: 1.8;
             flex: 1; margin-bottom: 20px;
         }
-        .proj-desc strong { color: var(--text); font-weight: 400; }
-        .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; }
+        .proj-desc strong { color: var(--text); font-weight: 600; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
         .tag {
-            font-size: 0.63rem; padding: 3px 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem; padding: 3px 8px;
             border: 1px solid var(--line); color: var(--muted);
-            border-radius: 2px;
         }
         .proj-link {
             display: inline-flex; align-items: center; gap: 8px;
-            font-family: 'Syne', sans-serif;
-            font-size: 0.65rem; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase;
-            color: var(--accent); text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem; font-weight: 500;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: var(--accent2); text-decoration: none;
             margin-top: auto;
             transition: gap 0.2s;
         }
-        .proj-link:hover { gap: 14px; }
+        .proj-link:hover { gap: 14px; color: var(--paper); }
         .proj-badge {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.6rem; font-weight: 700;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem; font-weight: 500;
             letter-spacing: 1px; text-transform: uppercase;
-            color: var(--muted);
-            border: 1px solid var(--line);
-            padding: 2px 7px; border-radius: 2px;
+            color: var(--rust);
+            border: 1px solid var(--rust);
+            padding: 2px 8px;
             display: inline-block; margin-bottom: 12px;
+            width: fit-content;
         }
 
         /* ── Skills ── */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
+            gap: 2px;
             background: var(--line);
-            border: 1px solid var(--line);
-            margin-bottom: 1px;
+            border: 2px solid var(--paper);
+            margin-bottom: 0;
         }
         .skill-cat {
             background: var(--bg2);
-            padding: 24px;
+            padding: 26px 22px;
         }
         .skill-cat h4 {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.63rem; font-weight: 700;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 16px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.85rem; font-weight: 400;
+            text-transform: uppercase;
+            color: var(--accent2);
+            margin-bottom: 18px;
+            letter-spacing: -0.3px;
         }
-        .skill-cat ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .skill-cat ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
         .skill-cat li {
-            font-size: 0.83rem; color: var(--muted);
-            padding-left: 12px; position: relative; line-height: 1.5;
+            font-size: 0.82rem; color: var(--muted);
+            padding-left: 14px; position: relative; line-height: 1.5;
         }
         .skill-cat li::before {
-            content: '';
-            position: absolute; left: 0; top: 9px;
-            width: 4px; height: 1px; background: var(--line);
+            content: '—';
+            position: absolute; left: 0; top: 0;
+            color: var(--rust);
         }
-        .skill-cat li strong { color: var(--text); font-weight: 400; }
+        .skill-cat li strong { color: var(--text); font-weight: 600; }
         .tools-wrap {
             background: var(--bg2);
-            border: 1px solid var(--line);
+            border: 2px solid var(--paper);
             border-top: none;
-            padding: 20px 24px;
+            padding: 20px 22px;
             display: flex; align-items: baseline; gap: 20px;
+            flex-wrap: wrap;
         }
         .tools-label {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.6rem; font-weight: 700;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: var(--muted); white-space: nowrap;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.78rem; font-weight: 400;
+            text-transform: uppercase;
+            color: var(--rust); white-space: nowrap;
         }
-        .tools-text { font-size: 0.8rem; color: var(--muted); line-height: 2; }
+        .tools-text {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.74rem; color: var(--muted); line-height: 2;
+        }
 
         /* ── Contact ── */
         .contact-wrap {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 1px; background: var(--line);
-            border: 1px solid var(--line);
+            display: grid; grid-template-columns: 1.1fr 1fr;
+            gap: 2px; background: var(--line);
+            border: 2px solid var(--paper);
         }
         .contact-left {
-            background: var(--bg2);
-            padding: 48px;
+            background: var(--accent2);
+            padding: 52px;
+            display: flex; align-items: center;
         }
         .contact-big {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.4rem, 4vw, 3.6rem);
-            font-weight: 800; line-height: 0.9;
-            letter-spacing: -2px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+            font-weight: 400; line-height: 0.92;
+            letter-spacing: -1.5px;
+            color: var(--bg);
+            text-transform: uppercase;
         }
-        .contact-big em { font-style: normal; color: var(--accent); }
+        .contact-big em { font-style: normal; color: var(--bg2); -webkit-text-stroke: 1px var(--bg); }
         .contact-right {
             background: var(--bg2);
-            padding: 48px;
-            display: flex; flex-direction: column; justify-content: center; gap: 20px;
+            padding: 52px;
+            display: flex; flex-direction: column; justify-content: center; gap: 22px;
         }
         .clink {
             display: flex; align-items: center; gap: 16px;
             text-decoration: none; color: var(--text);
-            padding-bottom: 20px;
+            padding-bottom: 22px;
             border-bottom: 1px solid var(--line);
         }
         .clink:last-child { border-bottom: none; padding-bottom: 0; }
         .clink-label {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.6rem; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--muted); width: 48px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem; letter-spacing: 1px;
+            text-transform: uppercase; color: var(--accent2); width: 54px;
         }
         .clink-val {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             transition: color 0.2s;
         }
-        .clink:hover .clink-val { color: var(--accent); }
+        .clink:hover .clink-val { color: var(--accent2); }
 
         footer {
-            padding: 24px 0;
+            padding: 26px 0;
             display: flex; justify-content: space-between;
-            font-size: 0.7rem; color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem; color: var(--muted);
         }
 
         /* ── Top nav ── */
@@ -291,52 +301,39 @@
             z-index: 200;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 48px;
-            height: 56px;
-            border-bottom: 1px solid var(--line);
-            background: rgba(13,12,11,0.9);
+            height: 60px;
+            border-bottom: 2px solid var(--line);
+            background: rgba(20,20,15,0.92);
             backdrop-filter: blur(8px);
         }
         .top-nav-logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 4px; text-transform: uppercase;
-            color: var(--accent);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.78rem; font-weight: 400;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: var(--accent2);
         }
-        .top-nav-links {
-            display: flex; align-items: center; gap: 32px;
-        }
-        .top-nav-links a {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.63rem; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase;
-            color: var(--muted); text-decoration: none;
-            transition: color 0.2s;
-        }
-        .top-nav-links a:hover { color: var(--accent); }
         .contact-btn {
-            font-size: 0.63rem !important;
-            color: var(--accent) !important;
-            border: 1px solid var(--accent) !important;
-            padding: 5px 14px;
-            border-radius: 2px;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s !important;
-        }
-        .contact-btn:hover {
-            background: var(--accent) !important;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.66rem !important;
             color: var(--bg) !important;
+            background: var(--accent2) !important;
+            border: none !important;
+            padding: 7px 16px;
+            text-decoration: none;
+            transition: background 0.2s !important;
         }
+        .contact-btn:hover { background: var(--rust) !important; }
 
         /* ── 스크롤 인디케이터 ── */
         .scroll-indicator {
-            position: fixed; bottom: 32px; right: 80px;
+            position: fixed; bottom: 32px; right: 60px;
             display: flex; flex-direction: column; align-items: center; gap: 14px;
             z-index: 100;
             animation: fadeInUp 1s 0.5s both;
         }
         .scroll-line {
             width: 2px; height: 56px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
+            background: linear-gradient(to bottom, var(--accent2), transparent);
             animation: scrollPulse 1.5s ease-in-out infinite;
         }
         @keyframes scrollPulse {
@@ -357,15 +354,14 @@
         .reveal.on { opacity: 1; transform: none; }
 
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 90px; }
             .proj-grid { grid-template-columns: 1fr; }
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-wrap { grid-template-columns: 1fr; }
+            .hero-bottom-row { align-items: flex-start; }
         }
         @media (max-width: 640px) {
-            .wrap { padding: 0 24px; }
-            .lang-bar { padding: 16px 24px; }
-            .hero-stats { grid-template-columns: repeat(3, 1fr); }
+            .wrap { padding: 0 22px; }
+            .top-nav { padding: 0 22px; }
         }
     </style>
 </head>
@@ -373,17 +369,19 @@
 
 <nav class="top-nav">
     <p class="top-nav-logo" data-ko="Full-Stack Developer" data-en="Full-Stack Developer"></p>
-    <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
-        <div class="lang-sep"></div>
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <div style="display:flex; align-items:center; gap:14px;">
+        <a href="#contact" class="contact-btn" data-ko="연락하기" data-en="Contact"></a>
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+            <div class="lang-sep"></div>
+            <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
     </div>
 </nav>
 
 <div class="scroll-indicator" id="scrollIndicator">
-    <a href="#contact" class="contact-btn" data-ko="연락하기" data-en="Contact"></a>
     <a href="#projects" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none;">
-        <span style="font-family:'Syne',sans-serif; font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent);" data-ko="SCROLL" data-en="SCROLL"></span>
+        <span style="font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--accent2);" data-ko="SCROLL" data-en="SCROLL"></span>
         <div class="scroll-line"></div>
     </a>
 </div>
@@ -392,25 +390,21 @@
 
     <!-- HERO -->
     <header class="hero">
-        <div class="hero-left">
-            <h1 class="hero-name">
-                <span class="outline">SUMIN</span><br>KIM
-            </h1>
-        </div>
-        <div class="hero-right">
+        <p class="hero-label" data-ko="포트폴리오 / 2026" data-en="PORTFOLIO / 2026"></p>
+        <h1 class="hero-name">SUMIN<br><span class="accent-word">KIM</span></h1>
+        <div class="hero-bottom-row">
             <p class="hero-desc"
-               data-ko="다양한 도메인의 실무 경험을 기반으로<br>비즈니스 로직을 이해하고,<br>견고한 백엔드 시스템을 설계합니다."
-               data-en="With hands-on experience across multiple industries,<br>I focus on understanding business logic<br>and building reliable backend systems."></p>
+               data-ko="다양한 도메인의 실무 경험을 기반으로 비즈니스 로직을 이해하고, 견고한 백엔드 시스템을 설계합니다."
+               data-en="With hands-on experience across multiple industries, I focus on understanding business logic and building reliable backend systems."></p>
+            <span class="hero-tagbox" data-ko="BACKEND DEVELOPER" data-en="BACKEND DEVELOPER"></span>
         </div>
     </header>
 
     <!-- PROJECTS -->
     <section class="section" id="projects">
         <div class="section-header">
-            <p class="eyebrow">
-                <span class="eyebrow-num">01</span>
-                <span data-ko="Projects" data-en="Projects"></span>
-            </p>
+            <span class="eyebrow-num">01</span>
+            <span class="eyebrow" data-ko="Projects" data-en="Projects"></span>
         </div>
         <div class="proj-grid reveal">
             <div class="proj">
@@ -461,7 +455,7 @@
                     <span class="tag">Groq AI</span><span class="tag">Kakao Maps</span>
                     <span class="tag">Vercel</span><span class="tag">Render</span>
                 </div>
-                <span style="font-family:'Syne',sans-serif; font-size:0.63rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; display:inline-block;" data-ko="🚧 개발 중" data-en="🚧 In Development"></span>
+                <span class="proj-badge" data-ko="🚧 개발 중" data-en="🚧 In Development"></span>
                 <a class="proj-link"
                    href="https://pharmfinder.vercel.app" target="_blank"
                    data-ko="사이트 바로가기 →" data-en="Visit Site →"></a>
@@ -472,10 +466,8 @@
     <!-- SKILLS -->
     <section class="section reveal" id="skills">
         <div class="section-header">
-            <p class="eyebrow">
-                <span class="eyebrow-num">02</span>
-                <span data-ko="Technical Skills" data-en="Technical Skills"></span>
-            </p>
+            <span class="eyebrow-num">02</span>
+            <span class="eyebrow" data-ko="Technical Skills" data-en="Technical Skills"></span>
         </div>
         <div class="skills-grid">
             <div class="skill-cat">
@@ -533,10 +525,8 @@
     <!-- CONTACT -->
     <section class="section reveal" id="contact">
         <div class="section-header">
-            <p class="eyebrow">
-                <span class="eyebrow-num">03</span>
-                <span data-ko="Get In Touch" data-en="Get In Touch"></span>
-            </p>
+            <span class="eyebrow-num">03</span>
+            <span class="eyebrow" data-ko="Get In Touch" data-en="Get In Touch"></span>
         </div>
         <div class="contact-wrap">
             <div class="contact-left">
@@ -577,9 +567,6 @@
         document.documentElement.lang = l;
         document.querySelectorAll('[data-ko][data-en]').forEach(el => {
             el.innerHTML = el.getAttribute('data-' + l) || '';
-        });
-        document.querySelectorAll('strong[data-ko][data-en]').forEach(el => {
-            el.textContent = el.getAttribute('data-' + l) || '';
         });
     }
     setLang('ko');
