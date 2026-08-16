@@ -1,365 +1,509 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>KIM SUMIN | Fullstack Developer</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QKZDXZ1JHJ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QKZDXZ1JHJ');
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-    :root{
-        --bg:#FAFAF8;
-        --surface:#FFFFFF;
-        --ink:#15171A;
-        --muted:#62666D;
-        --line:#E6E4DD;
-        --accent:#FF5A36;
-        --accent-soft:#FFF0EC;
-    }
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-    body{
-        font-family:'Inter',sans-serif;
-        background:var(--bg);
-        color:var(--ink);
-        line-height:1.6;
-        -webkit-font-smoothing:antialiased;
-    }
-    .mono{ font-family:'IBM Plex Mono',monospace; }
-    .wrap{ max-width:960px; margin:0 auto; padding:0 32px; }
-
-    /* ── Nav ── */
-    .nav{
-        position:sticky; top:0; z-index:100;
-        background:rgba(250,250,248,0.92); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-        border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-        max-width:960px; margin:0 auto; padding:0 32px;
-        height:62px; display:flex; align-items:center; justify-content:space-between;
-    }
-    .nav-name{ font-weight:700; font-size:0.95rem; letter-spacing:-0.2px; }
-    .nav-links{ display:flex; align-items:center; gap:28px; }
-    .nav-links a{
-        font-size:0.84rem; color:var(--muted); text-decoration:none; font-weight:500;
-        transition:color 0.15s;
-    }
-    .nav-links a:hover{ color:var(--ink); }
-    .nav-cta{
-        font-size:0.8rem !important; font-weight:600 !important; color:#fff !important;
-        background:var(--accent); padding:7px 16px; border-radius:6px;
-    }
-    .lang-toggle{ display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:0.74rem; }
-    .lang-btn{ background:none; border:none; cursor:pointer; color:var(--muted); padding:2px 4px; }
-    .lang-btn.active{ color:var(--ink); font-weight:600; text-decoration:underline; }
-
-    /* ── Hero ── */
-    .hero{ padding:88px 0 16px; }
-    .hero-eyebrow{
-        font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--accent);
-        font-weight:500; margin-bottom:18px;
-    }
-    .hero-title {
-        font-size: clamp(1.8rem, 4.5vw, 2.5rem); font-weight: 800; letter-spacing: -1.0px;
-        line-height: 1.4; margin-bottom: 28px; max-width: 680px;
-        white-space: pre-line; /* 줄바꿈 문자(\n)를 그대로 엔터로 렌더링하는 핵심 속성 */
-    }
-
-/* @media (max-width:760px) 안에 있던 기존 .hero-title br { display: none; } 은 삭제해줘! */
-    .hero-highlight{ color:var(--accent); }
-    .hero-stats{ display:flex; gap:36px; flex-wrap:wrap; }
-    .stat{ display:flex; flex-direction:column; gap:4px; }
-    .stat-num{ font-weight:800; font-size:1.3rem; color:var(--accent); }
-    .stat-label{ font-size:0.78rem; color:var(--muted); }
-    
-    .hero-highlights {
-      color: var(--accent);
-      font-weight: 800;
-      position: relative;
-      display: inline-block;
-    }       
-
-    /* ── Section ── */
-    .section{ padding:32px 0; border-top:1px solid var(--line); }
-    .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:32px; }
-    .section-title{ font-size:1.5rem; font-weight:800; letter-spacing:-0.5px; }
-    .section-sub{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted); }
-
-    /* ── Projects ── */
-    .proj-list{ display:flex; flex-direction:column; gap:18px; }
-    .proj-card{
-        background:var(--surface); border:1px solid var(--line); border-radius:12px;
-        padding:28px 30px; display:grid; grid-template-columns:200px 1fr; gap:26px;
-        transition:border-color 0.15s, box-shadow 0.15s;
-    }
-    .proj-card:hover{ border-color:var(--accent); box-shadow:0 4px 18px rgba(0,0,0,0.05); }
-    .proj-meta{ display:flex; flex-direction:column; gap:6px; }
-    .proj-role{
-        font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--accent);
-        text-transform:uppercase; letter-spacing:0.5px; font-weight:600;
-    }
-    .proj-title{ font-size:1.2rem; font-weight:700; letter-spacing:-0.3px; }
-    .proj-stack{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted); margin-top:4px; }
-    .proj-badge{
-        font-family:'IBM Plex Mono',monospace; font-size:0.64rem; color:var(--accent);
-        background:var(--accent-soft); padding:2px 8px; border-radius:4px; width:fit-content; margin-top:6px;
-    }
-    .proj-body{ display:flex; flex-direction:column; }
-    .proj-desc{ font-size:0.9rem; color:var(--muted); line-height:1.75; margin-bottom:14px; }
-    .proj-desc strong{ color:var(--ink); font-weight:600; }
-    .proj-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
-    .ptag{ font-size:0.7rem; background:var(--bg); border:1px solid var(--line); padding:3px 9px; border-radius:5px; color:var(--muted); }
-    .proj-link{
-        font-size:0.82rem; font-weight:600; color:var(--accent); text-decoration:none;
-        display:inline-flex; align-items:center; gap:5px; margin-top:auto; width:fit-content;
-    }
-    .proj-link:hover{ text-decoration:underline; }
-
-    /* ── Skills ── */
-    .skills-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-    .skill-card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px; }
-    .skill-card h4{
-        font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--accent);
-        text-transform:uppercase; letter-spacing:0.5px; margin-bottom:14px;
-    }
-    .skill-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
-    .skill-card li{ font-size:0.83rem; color:var(--muted); }
-    .skill-card li strong{ color:var(--ink); font-weight:600; }
-    .tools-row{
-        margin-top:16px; background:var(--surface); border:1px solid var(--line); border-radius:12px;
-        padding:18px 22px; display:flex; gap:18px; align-items:baseline; flex-wrap:wrap;
-    }
-    .tools-label{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--accent); font-weight:600; white-space:nowrap; }
-    .tools-text{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted); line-height:1.9; }
-
-    /* ── Contact ── */
-    .contact-box{
-        background:var(--ink); color:#fff; border-radius:16px; padding:48px;
-        display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
-    }
-    .contact-title{ font-size:1.7rem; font-weight:800; letter-spacing:-0.7px; max-width:360px; }
-    .contact-title em{ font-style:normal; color:#FFA494; }
-    .contact-links{ display:flex; flex-direction:column; gap:10px; }
-    .clink{ display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; }
-    .clink-label{ font-family:'IBM Plex Mono',monospace; font-size:0.66rem; color:#9AA0A6; width:46px; }
-    .clink-val{ font-size:0.92rem; font-weight:500; }
-    .clink:hover .clink-val{ color:#FFA494; }
-
-    footer{ padding:28px 0; display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted); }
-
-    /* ── 반응형 미디어 쿼리 최적화 ── */
-    @media (max-width:760px){
-        .wrap{ padding:0 20px; }
-        .nav-inner{ padding:0 20px; }
-        .hero{ padding:48px 0 16px; }
-        
-        .hero-title br { display: none; } 
-        
-        .hero-stats { gap: 20px 28px; }
-        
-        .proj-card{ grid-template-columns:1fr; padding:22px 24px; gap:16px; }
-        .proj-meta{ gap:4px; }
-        .proj-badge{ margin-top:2px; }
-        
-        .skills-grid{ grid-template-columns:1fr; gap:12px; }
-        .skill-card{ padding:18px; }
-        .tools-row{ padding:16px; flex-direction:column; gap:8px; }
-        
-        .nav-links{ gap:14px; }
-        .nav-links a:not(.lang-toggle):not(.nav-cta){ display:none; }
-        .contact-box{ padding:32px 24px; flex-direction:column; align-items:flex-start; gap:24px; }
-        .contact-title{ font-size:1.4rem; }
-        
-        footer { flex-direction: column; gap: 8px; align-items: center; text-align: center; }
-    }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-
-<nav class="nav">
-    <div class="nav-inner">
-        <span class="nav-name">SUMIN KIM</span>
-        <div class="nav-links">
-            <a href="#projects" data-ko="Projects" data-en="Projects"></a>
-            <a href="#skills" data-ko="Skills" data-en="Skills"></a>
-            <a href="#contact" class="nav-cta" data-ko="Contact" data-en="Contact"></a>
-            <div class="lang-toggle">
-                <button class="lang-btn active" id="btn-ko">KO</button>/<button class="lang-btn" id="btn-en">EN</button>
-            </div>
-        </div>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes bounceDown { 0%,100%{transform:translateY(0);opacity:.6} 50%{transform:translateY(8px);opacity:1} }
+    body { margin:0; }
+    a { color:#FF5A36; }
+    a:hover { color:#e8481f; }
+  </style>
+</helmet>
+<div style="{{ rootStyle }}">
+  <div style="{{ topBarStyle }}">
+    <span style="{{ logoStyle }}">SUMIN KIM</span>
+    <div style="{{ topRightStyle }}">
+      <span style="{{ counterStyle }}">{{ pageCounter }}</span>
+      <div style="{{ langToggleStyle }}">
+        <button onClick="{{ setLangKo }}" style="{{ langBtnKoStyle }}">KO</button>
+        <span style="{{ langSlashStyle }}">/</span>
+        <button onClick="{{ setLangEn }}" style="{{ langBtnEnStyle }}">EN</button>
+      </div>
     </div>
-</nav>
+  </div>
 
-<div class="wrap">
+  <div style="{{ progressTrackStyle }}">
+    <div style="{{ progressFillStyle }}"></div>
+  </div>
 
-    <header class="hero">
-        <p class="hero-eyebrow" data-ko="FULLSTACK DEVELOPER" data-en="FULLSTACK DEVELOPER"></p>
-        <h1 class="hero-title" 
-            data-ko="비즈니스를 이해하고
-            견고한 시스템을 만드는
-            풀스택 개발자 <span class='hero-highlights'>김수민</span>입니다."
-                    data-en="<span class='hero-highlight'>Sumin Kim</span> —
-            a fullstack developer who understands business
-            and builds reliable systems."></h1>
-        <!-- <div class="hero-stats">
-            <div class="stat"><span class="stat-num">3</span><span class="stat-label" data-ko="프로젝트" data-en="Projects"></span></div>
-            <div class="stat"><span class="stat-num">Java</span><span class="stat-label" data-ko="주력 언어" data-en="Main Language"></span></div>
-            <div class="stat"><span class="stat-num">Spring Boot</span><span class="stat-label" data-ko="핵심 프레임워크" data-en="Core Framework"></span></div>
-        </div> -->
-    </header>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ dotNavStyle }}">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="4">
+        <button onClick="{{ d.onClick }}" style="{{ d.style }}" title="{{ d.label }}"></button>
+      </sc-for>
+    </div>
+  </sc-if>
 
-    <section class="section" id="projects">
-        <div class="section-head">
-            <h2 class="section-title" data-ko="Projects" data-en="Projects"></h2>
-            <span class="section-sub" data-ko="01" data-en="01"></span>
+  <div ref="{{ containerRef }}" style="{{ containerStyle }}">
+    <div style="{{ trackStyle }}">
+
+      <section style="{{ sectionBaseStyle }}">
+        <div style="{{ heroWatermarkStyle }}">SUMIN KIM</div>
+        <div style="{{ innerWrapStyle }}">
+        <div style="{{ heroContentStyle }}">
+          <p style="{{ eyebrowStyle }}">FULLSTACK DEVELOPER</p>
+          <sc-if value="{{ isKo }}" hint-placeholder-val="{{ true }}">
+            <h1 style="{{ titleStyle }}">비즈니스를 이해하고 견고한 시스템을 만드는 풀스택 개발자 <span style="{{ accentTextStyle }}">김수민</span>입니다.</h1>
+          </sc-if>
+          <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+            <h1 style="{{ titleStyle }}"><span style="{{ accentTextStyle }}">Sumin Kim</span> — a fullstack developer who understands business and builds reliable systems.</h1>
+          </sc-if>
+          <div style="{{ ctaRowStyle }}">
+            <button onClick="{{ goToProjects }}" style="{{ ctaPrimaryStyle }}">{{ ctaProjectsLabel }}</button>
+            <button onClick="{{ goToContact }}" style="{{ ctaGhostStyle }}">{{ ctaEmailLabel }}</button>
+          </div>
         </div>
-        <div class="proj-list">
-            <div class="proj-card">
-                <div class="proj-meta">
-                    <span class="proj-role" data-ko="TEAM · 01" data-en="TEAM · 01"></span>
-                    <span class="proj-title">Lumina</span>
-                    <span class="proj-stack">Node.js · Redis · RabbitMQ</span>
+        </div>
+        <div style="{{ scrollHintStyle }}">
+          <span>{{ scrollHintLabel }}</span>
+          <div style="{{ bounceDotStyle }}"></div>
+        </div>
+      </section>
+
+      <section style="{{ sectionBaseStyle }}">
+        <div style="{{ innerWrapStyle }}">
+        <div style="{{ sectionHeadStyle }}">
+          <span style="{{ numeralStyle }}">01</span>
+          <h2 style="{{ sectionTitleStyle }}">Projects</h2>
+
+        </div>
+        <div style="{{ projectsGridStyle }}">
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+            <div style="{{ p.cardStyle }}" style-hover="{{ p.cardHoverStyle }}" onClick="{{ p.onOpen }}">
+              <div style="{{ p.metaColStyle }}">
+                <span style="{{ p.roleStyle }}">{{ p.role }}</span>
+                <div style="{{ p.titleRowStyle }}">
+                  <span style="{{ p.titleTextStyle }}">{{ p.title }}</span>
+                  <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ false }}">
+                    <span style="{{ p.badgeStyle }}">{{ p.badge }}</span>
+                  </sc-if>
                 </div>
-                <div class="proj-body">
-                    <p class="proj-desc"
-                       data-ko="<strong>MSA</strong> 기반의 팬덤 커머스 플랫폼. Redis 원자적 연산을 이용한 선착순 예약 엔진과 RabbitMQ 비동기 메시징으로 대규모 트래픽과 데이터 정합성을 확보했습니다."
-                       data-en="A fandom e-commerce platform built on <strong>MSA</strong>. First-come reservation engine via Redis atomic ops and RabbitMQ async messaging."></p>
-                    <div class="proj-tags">
-                        <span class="ptag">Node.js</span><span class="ptag">Spring Boot</span><span class="ptag">Redis</span>
-                        <span class="ptag">RabbitMQ</span><span class="ptag">Prisma</span><span class="ptag">Docker</span><span class="ptag">GCP</span>
-                    </div>
-                    <a class="proj-link" href="https://drive.google.com/file/d/1ujKJxbHDbxI8FTYmIkRyA2Mpr3FKz6zR/view?usp=drive_link" target="_blank" data-ko="포트폴리오 보기 →" data-en="View Portfolio →"></a>
-                </div>
+                <span style="{{ p.stackStyle }}">{{ p.stack }}</span>
+              </div>
+              <div style="{{ p.tagsRowStyle }}">
+                <sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="5">
+                  <span style="{{ p.tagStyle }}">{{ tag }}</span>
+                </sc-for>
+              </div>
+              <div style="{{ p.linkRowStyle }}">
+                <a href="{{ p.link }}" target="_blank" onClick="{{ stopClick }}" style="{{ p.linkStyle }}">{{ p.linkLabel }}</a>
+                <span style="{{ p.hintStyle }}">{{ detailHintLabel }}</span>
+              </div>
             </div>
-
-            <div class="proj-card">
-                <div class="proj-meta">
-                    <span class="proj-role" data-ko="TEAM · 02" data-en="TEAM · 02"></span>
-                    <span class="proj-title">CampUS</span>
-                    <span class="proj-stack">Spring Boot · SSE · Oracle DB</span>
-                </div>
-                <div class="proj-body">
-                    <p class="proj-desc"
-                       data-ko="<strong>대학 포털, 커뮤니티, 학사관리</strong>를 통합한 올인원 플랫폼. SSE 기반 실시간 알림, 성적 자동 계산, AJAX 수강 후기 등록."
-                       data-en="All-in-one platform integrating <strong>university portal, community, and academic management</strong>. SSE real-time notifications, auto grade calc."></p>
-                    <div class="proj-tags">
-                        <span class="ptag">Spring Boot</span><span class="ptag">SSE</span><span class="ptag">HTML/CSS</span>
-                        <span class="ptag">Oracle DB</span><span class="ptag">GitHub</span>
-                    </div>
-                    <a class="proj-link" href="https://drive.google.com/file/d/1GN-HrvgjdCbqH0deaHypXM27cSdxEboV/view?usp=drive_link" target="_blank" data-ko="포트폴리오 보기 →" data-en="View Portfolio →"></a>
-                </div>
-            </div>
-
-            <div class="proj-card">
-                <div class="proj-meta">
-                    <span class="proj-role" data-ko="SOLO · 03" data-en="SOLO · 03"></span>
-                    <span class="proj-title">PharmFinder</span>
-                    <span class="proj-stack">Node.js · React · Supabase</span>
-                    <span class="proj-badge" data-ko="🚧 개발 중" data-en="🚧 In Development"></span>
-                </div>
-                <div class="proj-body">
-                    <p class="proj-desc"
-                       data-ko="증상 입력으로 <strong>AI 약 추천</strong>, 주변 약국 실시간 재고 확인. Groq AI + 카카오맵 + 소셜 로그인. 기획부터 배포까지 솔로 진행."
-                       data-en="<strong>AI medicine recommendation</strong> by symptom, real-time pharmacy inventory. Groq AI + Kakao Maps + social login. Solo from planning to deployment."></p>
-                    <div class="proj-tags">
-                        <span class="ptag">React</span><span class="ptag">Supabase</span><span class="ptag">Groq AI</span>
-                        <span class="ptag">Kakao Maps</span><span class="ptag">Vercel</span><span class="ptag">Render</span>
-                    </div>
-                    <a class="proj-link" href="https://pharmfinder.vercel.app" target="_blank" data-ko="사이트 바로가기 →" data-en="Visit Site →"></a>
-                </div>
-            </div>
+          </sc-for>
         </div>
-    </section>
+        </div>
+      </section>
 
-    <section class="section" id="skills">
-        <div class="section-head">
-            <h2 class="section-title" data-ko="Technical Skills" data-en="Technical Skills"></h2>
-            <span class="section-sub" data-ko="02" data-en="02"></span>
+      <section style="{{ sectionBaseStyle }}">
+        <div style="{{ innerWrapStyle }}">
+        <div style="{{ sectionHeadStyle }}">
+          <span style="{{ numeralStyle }}">02</span>
+          <h2 style="{{ sectionTitleStyle }}">Technical Skills</h2>
         </div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h4 data-ko="Backend" data-en="Backend"></h4>
-                <ul>
-                    <li><strong>Java</strong> — Spring, Spring Boot, JSP</li>
-                    <li><strong>Node.js</strong> — Express, Prisma</li>
-                    <li><strong>SQL</strong> — MyBatis, JPA</li>
-                    <li><strong>Security</strong> — Spring Security, JWT</li>
-                </ul>
+        <div style="{{ skillsGridStyle }}">
+          <sc-for list="{{ skillCats }}" as="cat" hint-placeholder-count="4">
+            <div style="{{ skillCardStyle }}">
+              <h4 style="{{ skillCatTitleStyle }}">{{ cat.name }}</h4>
+              <div style="{{ skillListStyle }}">
+                <sc-for list="{{ cat.items }}" as="it" hint-placeholder-count="4">
+                  <span style="{{ skillItemStyle }}"><strong style="{{ skillStrongStyle }}">{{ it.label }}</strong>{{ it.rest }}</span>
+                </sc-for>
+              </div>
             </div>
-            <div class="skill-card">
-                <h4 data-ko="Frontend" data-en="Frontend"></h4>
-                <ul>
-                    <li><strong>HTML / CSS / JS</strong></li>
-                    <li><strong>React</strong>, jQuery, Ajax</li>
-                    <li><strong>Thymeleaf</strong>, Bootstrap</li>
-                    <li><strong>Figma</strong> — UI/UX</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h4 data-ko="Infra & DevOps" data-en="Infra & DevOps"></h4>
-                <ul>
-                    <li>AWS (EC2), GCP</li>
-                    <li>Docker, Compose</li>
-                    <li>Nginx, Tomcat</li>
-                    <li>GitHub Actions</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h4 data-ko="Data & AI" data-en="Data & AI"></h4>
-                <ul>
-                    <li>MySQL, Oracle, PostgreSQL</li>
-                    <li>Redis, RabbitMQ, MSA</li>
-                    <li>Spring AI, TensorFlow</li>
-                </ul>
-            </div>
+          </sc-for>
         </div>
-        <div class="tools-row">
-            <span class="tools-label" data-ko="Tools" data-en="Tools"></span>
-            <span class="tools-text">VS Code · STS4 · IntelliJ · DBeaver · Postman · Git · GitHub Actions</span>
+        <div style="{{ toolsRowStyle }}">
+          <span style="{{ toolsLabelStyle }}">Tools</span>
+          <span style="{{ toolsTextStyle }}">VS Code · STS4 · Eclipse · DBeaver · Postman · Git · GitHub Actions</span>
         </div>
-    </section>
+        </div>
+      </section>
 
-    <section class="section" id="contact">
-        <div class="section-head">
-            <h2 class="section-title" data-ko="Get In Touch" data-en="Get In Touch"></h2>
-            <span class="section-sub" data-ko="03" data-en="03"></span>
+      <section style="{{ sectionBaseStyle }}">
+        <div style="{{ innerWrapStyle }}">
+        <div style="{{ sectionHeadStyle }}">
+          <span style="{{ numeralStyle }}">03</span>
+          <h2 style="{{ sectionTitleStyle }}">Get In Touch</h2>
         </div>
-        <div class="contact-box">
-            <h3 class="contact-title" data-ko="새로운 <em>기회를 기다리고 있어요.</em>" data-en="Looking forward to <em>new opportunities.</em>"></h3>
-            <div class="contact-links">
-                <a class="clink" href="mailto:oksm1003@gmail.com"><span class="clink-label">Email</span><span class="clink-val">oksm1003@gmail.com</span></a>
-                <a class="clink" href="https://github.com/sumin1003" target="_blank"><span class="clink-label">GitHub</span><span class="clink-val">github.com/sumin1003</span></a>
-            </div>
+        <div style="{{ contactBoxStyle }}">
+          <sc-if value="{{ isKo }}" hint-placeholder-val="{{ true }}">
+            <h3 style="{{ contactTitleStyle }}">새로운 <span style="{{ contactHighlightStyle }}">기회를 기다리고 있어요.</span></h3>
+          </sc-if>
+          <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+            <h3 style="{{ contactTitleStyle }}">Looking forward to <span style="{{ contactHighlightStyle }}">new opportunities.</span></h3>
+          </sc-if>
+          <div style="{{ contactLinksStyle }}">
+            <a href="mailto:oksm1003@gmail.com" style="{{ clinkStyle }}" style-hover="{{ clinkHoverStyle }}"><span style="{{ clinkLabelStyle }}">Email</span><span style="{{ clinkValStyle }}">oksm1003@gmail.com</span></a>
+            <a href="https://github.com/sumin1003" target="_blank" style="{{ clinkStyle }}" style-hover="{{ clinkHoverStyle }}"><span style="{{ clinkLabelStyle }}">GitHub</span><span style="{{ clinkValStyle }}">github.com/sumin1003</span></a>
+          </div>
         </div>
-    </section>
+        </div>
+        <div style="{{ footerStyle }}">
+          <span>© 2026 KIM SUMIN</span>
+          <span>All rights reserved.</span>
+        </div>
+      </section>
 
-    <footer>
-        <span>© 2026 KIM SUMIN</span>
-        <span data-ko="All rights reserved." data-en="All rights reserved."></span>
-    </footer>
+    </div>
+  </div>
 
+  <sc-if value="{{ !isDesktop }}" hint-placeholder-val="{{ false }}">
+    <div style="{{ mobileDotNavStyle }}">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="4">
+        <button onClick="{{ d.onClick }}" style="{{ d.mobileStyle }}"></button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ selectedProject }}" hint-placeholder-val="{{ false }}">
+    <div style="{{ overlayBackdropStyle }}" onClick="{{ closeProject }}">
+      <div style="{{ overlayCardStyle }}" onClick="{{ stopClick }}">
+        <button onClick="{{ closeProject }}" style="{{ overlayCloseStyle }}">×</button>
+        <div style="{{ selectedProject.metaColStyle }}">
+          <span style="{{ selectedProject.roleStyle }}">{{ selectedProject.role }}</span>
+          <span style="{{ selectedProject.overlayTitleStyle }}">{{ selectedProject.title }}</span>
+          <span style="{{ selectedProject.stackStyle }}">{{ selectedProject.stack }}</span>
+          <sc-if value="{{ selectedProject.badge }}" hint-placeholder-val="{{ false }}">
+            <span style="{{ selectedProject.badgeStyle }}">{{ selectedProject.badge }}</span>
+          </sc-if>
+        </div>
+        <p style="{{ selectedProject.descStyle }}">{{ selectedProject.descPre }}<strong style="{{ selectedProject.boldStyle }}">{{ selectedProject.descBold }}</strong>{{ selectedProject.descPost }}</p>
+        <div style="{{ selectedProject.tagsRowStyle }}">
+          <sc-for list="{{ selectedProject.tags }}" as="tag" hint-placeholder-count="5">
+            <span style="{{ selectedProject.tagStyle }}">{{ tag }}</span>
+          </sc-for>
+        </div>
+        <a href="{{ selectedProject.link }}" target="_blank" style="{{ selectedProject.overlayLinkStyle }}">{{ selectedProject.linkLabel }}</a>
+      </div>
+    </div>
+  </sc-if>
 </div>
 
-<script>
-    function setLang(l){
-        document.getElementById('btn-ko').classList.toggle('active', l==='ko');
-        document.getElementById('btn-en').classList.toggle('active', l==='en');
-        document.querySelectorAll('[data-ko][data-en]').forEach(el=>{
-            el.innerHTML = el.getAttribute('data-'+l) || '';
-        });
-    }
-    document.getElementById('btn-ko').addEventListener('click', ()=>setLang('ko'));
-    document.getElementById('btn-en').addEventListener('click', ()=>setLang('en'));
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;defaultLang&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;ko&quot;,&quot;options&quot;:[&quot;ko&quot;,&quot;en&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behavior&quot;},
+  &quot;transitionDuration&quot;: {&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:700,&quot;min&quot;:300,&quot;max&quot;:1200,&quot;step&quot;:50,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behavior&quot;}
+}">
+const C = {
+  bg:'#FAFAF8', surface:'#FFFFFF', ink:'#15171A', muted:'#62666D',
+  line:'#E6E4DD', accent:'#FF5A36', accentSoft:'#FFF0EC'
+};
+const FONT = "'Inter',sans-serif";
+const MONO = "'IBM Plex Mono',monospace";
 
-    // 초기 구동 시 한글 화면 매핑 실행
-    setLang('ko'); 
+const PROJECTS_DATA = [
+  {
+    role:{ko:'TEAM · 01',en:'TEAM · 01'}, title:'Lumina', stack:'Node.js · React · Redis · RabbitMQ',
+    badge:null,
+    descPre:{ko:'', en:'A fandom e-commerce platform built on '},
+    descBold:{ko:'MSA', en:'MSA'},
+    descPost:{ko:' 기반의 팬덤 커머스 플랫폼. Redis 원자적 연산을 이용한 선착순 예약 엔진과 RabbitMQ 비동기 메시징으로 대규모 트래픽과 데이터 정합성을 확보했습니다.', en:'. First-come reservation engine via Redis atomic ops and RabbitMQ async messaging.'},
+    tags:['Node.js','React','Spring Boot','Redis','RabbitMQ','Prisma','Docker','GCP'],
+    link:'https://drive.google.com/file/d/1ujKJxbHDbxI8FTYmIkRyA2Mpr3FKz6zR/view?usp=drive_link',
+    linkLabel:{ko:'포트폴리오 보기 →', en:'View Portfolio →'}
+  },
+  {
+    role:{ko:'TEAM · 02',en:'TEAM · 02'}, title:'CampUS', stack:'Spring Boot · SSE · Oracle DB',
+    badge:null,
+    descPre:{ko:'', en:'All-in-one platform integrating '},
+    descBold:{ko:'대학 포털, 커뮤니티, 학사관리', en:'university portal, community, and academic management'},
+    descPost:{ko:'를 통합한 올인원 플랫폼. SSE 기반 실시간 알림, 성적 자동 계산, AJAX 수강 후기 등록.', en:'. SSE real-time notifications, auto grade calc.'},
+    tags:['Spring Boot','SSE','HTML/CSS','Oracle DB','GitHub'],
+    link:'https://drive.google.com/file/d/1GN-HrvgjdCbqH0deaHypXM27cSdxEboV/view?usp=drive_link',
+    linkLabel:{ko:'포트폴리오 보기 →', en:'View Portfolio →'}
+  },
+  {
+    role:{ko:'SOLO · 03',en:'SOLO · 03'}, title:'PharmFinder', stack:'Node.js · React · Supabase',
+    badge:{ko:'🚧 개발 중', en:'🚧 In Development'},
+    descPre:{ko:'증상 입력으로 ', en:''},
+    descBold:{ko:'AI 약 추천', en:'AI medicine recommendation'},
+    descPost:{ko:', 주변 약국 실시간 재고 확인. Groq AI + 카카오맵 + 소셜 로그인. 기획부터 배포까지 솔로 진행.', en:' by symptom, real-time pharmacy inventory. Groq AI + Kakao Maps + social login. Solo from planning to deployment.'},
+    tags:['React','Supabase','Groq AI','Kakao Maps','Vercel','Render'],
+    link:'https://pharmfinder.vercel.app',
+    linkLabel:{ko:'사이트 바로가기 →', en:'Visit Site →'}
+  }
+];
+
+const SKILLS_DATA = [
+  { name:'Backend', items:[
+    {label:'Java', rest:' — Spring, Spring Boot, JSP'},
+    {label:'Node.js', rest:' — Express, Prisma'},
+    {label:'SQL', rest:' — MyBatis, JPA'},
+    {label:'Security', rest:' — Spring Security, JWT'}
+  ]},
+  { name:'Frontend', items:[
+    {label:'HTML / CSS / JS', rest:''},
+    {label:'React', rest:', jQuery, Ajax'},
+    {label:'Thymeleaf', rest:', Bootstrap'},
+    {label:'Figma', rest:' — UI/UX'}
+  ]},
+  { name:'Infra & DevOps', items:[
+    {label:'AWS (EC2)', rest:', GCP'},
+    {label:'Docker', rest:', Compose'},
+    {label:'Nginx', rest:', Tomcat'},
+    {label:'GitHub Actions', rest:''}
+  ]},
+  { name:'Data & AI', items:[
+    {label:'MySQL', rest:', Oracle, PostgreSQL'},
+    {label:'Redis', rest:', RabbitMQ, MSA'},
+    {label:'Spring AI', rest:', TensorFlow'}
+  ]}
+];
+
+const SECTION_COUNT = 4;
+
+class Component extends DCLogic {
+  containerRef = React.createRef();
+  state = {
+    lang: (this.props.defaultLang === 'en') ? 'en' : 'ko',
+    active: 0,
+    animating: false,
+    selectedIndex: null,
+    width: typeof window !== 'undefined' ? window.innerWidth : 1200
+  };
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ width: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+    this._onWheel = (e) => this.handleWheel(e);
+    const el = this.containerRef.current;
+    if (el) el.addEventListener('wheel', this._onWheel, { passive: false });
+    this._onKey = (e) => this.handleKey(e);
+    window.addEventListener('keydown', this._onKey);
+    this._touchStartY = null;
+    this._onTouchStart = (e) => { this._touchStartY = e.touches[0].clientY; };
+    this._onTouchEnd = (e) => {
+      if (this._touchStartY == null) return;
+      const dy = this._touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) > 60) this.goTo(this.state.active + (dy > 0 ? 1 : -1));
+      this._touchStartY = null;
+    };
+    if (el) {
+      el.addEventListener('touchstart', this._onTouchStart, { passive: true });
+      el.addEventListener('touchend', this._onTouchEnd, { passive: true });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('keydown', this._onKey);
+    const el = this.containerRef.current;
+    if (el) {
+      el.removeEventListener('wheel', this._onWheel);
+      el.removeEventListener('touchstart', this._onTouchStart);
+      el.removeEventListener('touchend', this._onTouchEnd);
+    }
+  }
+
+  get transitionMs() { return this.props.transitionDuration ?? 700; }
+
+  goTo(i) {
+    const clamped = Math.max(0, Math.min(SECTION_COUNT - 1, i));
+    if (clamped === this.state.active || this.state.animating) return;
+    this.setState({ active: clamped, animating: true });
+    setTimeout(() => this.setState({ animating: false }), this.transitionMs);
+  }
+
+  handleWheel(e) {
+    if (Math.abs(e.deltaY) < 12) return;
+    e.preventDefault();
+    if (this.state.animating) return;
+    this.goTo(this.state.active + (e.deltaY > 0 ? 1 : -1));
+  }
+
+  handleKey(e) {
+    if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); this.goTo(this.state.active + 1); }
+    else if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); this.goTo(this.state.active - 1); }
+    else if (e.key === 'Escape' && this.state.selectedIndex != null) { this.closeProject(); }
+  }
+
+  openProject(i) { this.setState({ selectedIndex: i }); }
+  closeProject() { this.setState({ selectedIndex: null }); }
+
+  renderVals() {
+    const { lang, active, selectedIndex, width } = this.state;
+    const isKo = lang === 'ko';
+    const isEn = lang === 'en';
+    const isDesktop = width >= 860;
+    const transitionMs = this.transitionMs;
+
+    const rootStyle = {
+      fontFamily: FONT, background: C.bg, color: C.ink, height:'100vh', width:'100%',
+      overflow:'hidden', position:'relative', lineHeight:1.6
+    };
+
+    const topBarStyle = {
+      position:'fixed', top:0, left:0, right:0, height:60, zIndex:50,
+      display:'flex', alignItems:'center', justifyContent:'space-between',
+      padding:'0 32px', background:'rgba(250,250,248,0.85)', backdropFilter:'blur(6px)',
+      borderBottom:`1px solid ${C.line}`
+    };
+    const logoStyle = { fontWeight:700, fontSize:'0.9rem', letterSpacing:'-0.2px' };
+    const topRightStyle = { display:'flex', alignItems:'center', gap:22 };
+    const counterStyle = { fontFamily:MONO, fontSize:'0.72rem', color:C.muted, letterSpacing:'0.5px' };
+    const langToggleStyle = { display:'flex', alignItems:'center', gap:6, fontFamily:MONO, fontSize:'0.72rem' };
+    const langBtnBase = { background:'none', border:'none', cursor:'pointer', padding:'2px 4px', fontFamily:MONO, fontSize:'0.72rem' };
+    const langBtnKoStyle = { ...langBtnBase, color: isKo ? C.ink : C.muted, fontWeight: isKo ? 600 : 400, textDecoration: isKo ? 'underline' : 'none' };
+    const langBtnEnStyle = { ...langBtnBase, color: isEn ? C.ink : C.muted, fontWeight: isEn ? 600 : 400, textDecoration: isEn ? 'underline' : 'none' };
+    const langSlashStyle = { color:C.muted, fontSize:'0.72rem' };
+
+    const progressTrackStyle = { position:'fixed', top:60, left:0, right:0, height:2, background:C.line, zIndex:49 };
+    const progressFillStyle = { height:'100%', width:`${((active+1)/SECTION_COUNT)*100}%`, background:C.accent, transition:`width ${transitionMs}ms ease` };
+
+    const dots = Array.from({ length: SECTION_COUNT }, (_, i) => {
+      const labels = ['Home','Projects','Skills','Contact'];
+      const on = i === active;
+      return {
+        label: labels[i],
+        onClick: () => this.goTo(i),
+        style: {
+          width: on ? 10 : 7, height: on ? 10 : 7, borderRadius:'50%',
+          border:`1.5px solid ${on ? C.accent : C.muted}`,
+          background: on ? C.accent : 'transparent', cursor:'pointer', padding:0,
+          transition:'all 0.25s ease', opacity: on ? 1 : 0.5
+        },
+        mobileStyle: {
+          width: on ? 18 : 8, height: 4, borderRadius:2,
+          border:'none', background: on ? C.accent : C.line, cursor:'pointer', padding:0,
+          transition:'all 0.25s ease'
+        }
+      };
+    });
+
+    const dotNavStyle = { position:'fixed', right:28, top:'50%', transform:'translateY(-50%)', display:'flex', flexDirection:'column', gap:14, zIndex:50 };
+    const mobileDotNavStyle = { position:'fixed', bottom:18, left:0, right:0, display:'flex', justifyContent:'center', gap:6, zIndex:50 };
+
+    const containerStyle = { position:'absolute', inset:0, overflow:'hidden' };
+    const trackStyle = { height:`${SECTION_COUNT*100}vh`, transform:`translateY(-${active*100}vh)`, transition:`transform ${transitionMs}ms cubic-bezier(0.65,0,0.35,1)` };
+
+    const pad = isDesktop ? '0 64px' : '0 22px';
+    const sectionBaseStyle = { height:'100vh', width:'100%', boxSizing:'border-box', padding: pad, display:'flex', flexDirection:'column', justifyContent:'center', position:'relative' };
+    const innerWrapStyle = { width:'100%', maxWidth:1320, margin:'0 auto', position:'relative' };
+
+    const contentVis = (idx) => ({
+      opacity: active === idx ? 1 : 0,
+      transform: active === idx ? 'translateY(0)' : 'translateY(18px)',
+      transition:'opacity 0.55s ease 0.12s, transform 0.55s ease 0.12s',
+      pointerEvents: active === idx ? 'auto' : 'none'
+    });
+
+    const sidePad = isDesktop ? 64 : 22;
+    const leftEdge = width > (1320 + sidePad * 2) ? (width - 1320) / 2 : sidePad;
+    const heroWatermarkStyle = {
+      position:'absolute', bottom: isDesktop ? -40 : -10, left: leftEdge,
+      fontSize: isDesktop ? '11rem' : '3.2rem', fontWeight:900, color:C.line, opacity:0.5,
+      letterSpacing:'-4px', whiteSpace:'nowrap', userSelect:'none', zIndex:0
+    };
+    const heroContentStyle = { maxWidth:760, position:'relative', zIndex:1, ...contentVis(0) };
+    const eyebrowStyle = { fontFamily:MONO, fontSize:'0.85rem', color:C.accent, fontWeight:500, marginBottom:20, letterSpacing:'0.5px' };
+    const titleStyle = { fontSize: isDesktop ? 'clamp(2.2rem,4.5vw,3.4rem)' : '1.9rem', fontWeight:800, letterSpacing:'-1px', lineHeight:1.35, margin:'0 0 34px', textWrap:'pretty' };
+    const accentTextStyle = { color:C.accent };
+    const ctaRowStyle = { display:'flex', gap:14, flexWrap:'wrap' };
+    const ctaPrimaryStyle = { background:C.accent, color:'#fff', border:'none', padding:'13px 24px', borderRadius:8, fontSize:'0.9rem', fontWeight:600, cursor:'pointer', fontFamily:FONT };
+    const ctaGhostStyle = { border:`1px solid ${C.line}`, background:'none', color:C.ink, padding:'12px 24px', borderRadius:8, fontSize:'0.9rem', fontWeight:600, textDecoration:'none', cursor:'pointer', fontFamily:FONT, whiteSpace:'nowrap' };
+    const scrollHintStyle = { position:'absolute', bottom:36, right: isDesktop?64:22, display:'flex', alignItems:'center', gap:10, fontFamily:FONT, fontSize:'0.82rem', fontWeight:600, color:C.accent, ...contentVis(0) };
+    const bounceDotStyle = { width:6, height:6, borderRadius:'50%', background:C.accent, animation:'bounceDown 1.4s ease-in-out infinite' };
+
+    const sectionHeadStyle = { display:'flex', alignItems:'baseline', gap:16, marginBottom: isDesktop ? 36 : 22, position:'relative', zIndex:1 };
+    const numeralStyle = { fontFamily:MONO, fontSize: isDesktop ? '3.4rem' : '2rem', fontWeight:700, color:C.line };
+    const sectionTitleStyle = { fontSize: isDesktop ? '1.7rem' : '1.3rem', fontWeight:800, letterSpacing:'-0.5px' };
+    const sectionSubStyle = { fontFamily:MONO, fontSize:'0.78rem', color:C.muted, marginLeft:'auto' };
+
+    const projectsGridStyle = { display:'grid', gridTemplateColumns: isDesktop ? 'repeat(3,1fr)' : '1fr', gap:16, ...contentVis(1) };
+
+    const projects = PROJECTS_DATA.map((p, i) => ({
+      role: p.role[lang], title: p.title, stack: p.stack,
+      badge: p.badge ? p.badge[lang] : null,
+      descPre: p.descPre[lang], descBold: p.descBold[lang], descPost: p.descPost[lang],
+      tags: p.tags, link: p.link, linkLabel: p.linkLabel[lang],
+      onOpen: () => this.openProject(i),
+      cardStyle: {
+        background:C.surface, border:`1px solid ${C.line}`, borderRadius:14, padding: isDesktop ? '24px' : '20px',
+        display:'flex', flexDirection:'column', gap:12, cursor:'pointer', transition:'border-color 0.15s, box-shadow 0.15s'
+      },
+      cardHoverStyle: { borderColor:C.accent, boxShadow:'0 4px 18px rgba(0,0,0,0.06)' },
+      metaColStyle: { display:'flex', flexDirection:'column', gap:6 },
+      titleRowStyle: { display:'flex', alignItems:'center', justifyContent:'space-between', gap:20, flexWrap:'wrap' },
+      roleStyle: { fontFamily:MONO, fontSize:'0.68rem', color:C.accent, textTransform:'uppercase', letterSpacing:'0.5px', fontWeight:600 },
+      titleTextStyle: { fontSize:'1.15rem', fontWeight:700, letterSpacing:'-0.3px' },
+      overlayTitleStyle: { fontSize:'1.4rem', fontWeight:700, letterSpacing:'-0.3px' },
+      stackStyle: { fontFamily:MONO, fontSize:'0.72rem', color:C.muted, marginTop:4 },
+      badgeStyle: { fontFamily:FONT, fontSize:'0.7rem', fontWeight:600, color:C.accent, background:C.accentSoft, padding:'2px 8px', borderRadius:4, width:'fit-content' },
+      descStyle: { fontSize:'0.92rem', color:C.muted, lineHeight:1.75, margin:'14px 0', textWrap:'pretty' },
+      boldStyle: { color:C.ink, fontWeight:600 },
+      tagsRowStyle: { display:'flex', flexWrap:'wrap', gap:6 },
+      tagStyle: { fontSize:'0.7rem', background:C.bg, border:`1px solid ${C.line}`, padding:'3px 9px', borderRadius:5, color:C.muted },
+      linkRowStyle: { display:'flex', alignItems:'center', justifyContent:'space-between', gap:12, marginTop:28 },
+      linkStyle: { fontSize:'0.85rem', fontWeight:600, color:C.accent, textDecoration:'none' },
+      overlayLinkStyle: { fontSize:'0.85rem', fontWeight:600, color:C.accent, textDecoration:'none', marginTop:28, display:'inline-block' },
+      hintStyle: { fontFamily:FONT, fontSize:'0.78rem', fontWeight:600, color:'#fff', background:'rgba(255,90,54,0.75)', padding:'5px 10px', borderRadius:6 }
+    }));
+    const selectedProject = selectedIndex != null ? projects[selectedIndex] : null;
+    const detailHintLabel = isKo ? '자세히 보기 →' : 'View details →';
+    const overlayBackdropStyle = { position:'fixed', inset:0, background:'rgba(21,23,26,0.5)', zIndex:80, display:'flex', alignItems:'center', justifyContent:'center', padding:20 };
+    const overlayCardStyle = { position:'relative', background:C.surface, borderRadius:16, padding: isDesktop ? '40px' : '26px', maxWidth:560, width:'100%', maxHeight:'82vh', overflow:'auto', boxSizing:'border-box' };
+    const overlayCloseStyle = { position:'absolute', top:16, right:16, width:32, height:32, borderRadius:'50%', border:`1px solid ${C.line}`, background:C.bg, fontSize:'1.1rem', color:C.ink, cursor:'pointer' };
+    const closeProject = () => this.closeProject();
+    const stopClick = (e) => e.stopPropagation();
+
+    const skillsGridStyle = { display:'grid', gridTemplateColumns: isDesktop ? 'repeat(4,1fr)' : '1fr', gap:14, ...contentVis(2) };
+    const skillCardStyle = { background:C.surface, border:`1px solid ${C.line}`, borderRadius:12, padding: isDesktop?'20px':'16px' };
+    const skillCatTitleStyle = { fontFamily:MONO, fontSize:'0.72rem', color:C.accent, textTransform:'uppercase', letterSpacing:'0.5px', margin:'0 0 12px' };
+    const skillListStyle = { display:'flex', flexDirection:'column', gap:7 };
+    const skillItemStyle = { fontSize:'0.82rem', color:C.muted };
+    const skillStrongStyle = { color:C.ink, fontWeight:600 };
+    const toolsRowStyle = { marginTop:14, background:C.surface, border:`1px solid ${C.line}`, borderRadius:12, padding: isDesktop ? '16px 20px' : '14px 16px', display:'flex', gap:16, alignItems:'baseline', flexWrap:'wrap', ...contentVis(2) };
+    const toolsLabelStyle = { fontFamily:MONO, fontSize:'0.7rem', color:C.accent, fontWeight:600, whiteSpace:'nowrap' };
+    const toolsTextStyle = { fontFamily:MONO, fontSize:'0.75rem', color:C.muted, lineHeight:1.9 };
+
+    const contactBoxStyle = { background:C.surface, border:`1px solid ${C.line}`, color:C.ink, borderRadius:16, padding: isDesktop ? '48px' : '30px 22px', display:'flex', alignItems: isDesktop ? 'center':'flex-start', justifyContent:'space-between', gap:28, flexWrap:'wrap', ...contentVis(3) };
+    const contactTitleStyle = { fontFamily:FONT, fontSize: isDesktop ? '1.7rem' : '1.15rem', fontWeight:800, letterSpacing:'-0.7px', whiteSpace: isDesktop ? 'nowrap' : 'normal', margin:0 };
+    const contactHighlightStyle = { color:C.accent };
+    const contactLinksStyle = { display:'flex', flexDirection:'row', gap:12, flexWrap:'wrap' };
+    const clinkStyle = {
+      display:'flex', flexDirection:'row', alignItems:'center', gap:10, textDecoration:'none', color:C.ink,
+      background:C.bg, border:`1px solid ${C.line}`, borderRadius:10, padding:'12px 20px',
+      transition:'border-color 0.15s, background 0.15s'
+    };
+    const clinkHoverStyle = { borderColor:C.accent, background:C.accentSoft };
+    const clinkLabelStyle = { fontFamily:MONO, fontSize:'0.7rem', color:C.muted, textTransform:'uppercase', letterSpacing:'0.5px' };
+    const clinkValStyle = { fontSize:'1rem', fontWeight:700, color:C.ink };
+    const footerStyle = { position:'absolute', bottom:24, left: isDesktop?64:22, right: isDesktop?64:22, display:'flex', justifyContent:'space-between', fontFamily:MONO, fontSize:'0.7rem', color:C.muted, ...contentVis(3) };
+
+    return {
+      isKo, isEn, isDesktop, rootStyle, topBarStyle, logoStyle, topRightStyle, counterStyle,
+      pageCounter: `${active+1} / ${SECTION_COUNT}`,
+      langToggleStyle, langBtnKoStyle, langBtnEnStyle, langSlashStyle,
+      setLangKo: () => this.setState({ lang:'ko' }), setLangEn: () => this.setState({ lang:'en' }),
+      progressTrackStyle, progressFillStyle, dots, dotNavStyle, mobileDotNavStyle,
+      containerRef: this.containerRef, containerStyle, trackStyle, sectionBaseStyle, innerWrapStyle,
+      heroWatermarkStyle, heroContentStyle, eyebrowStyle, titleStyle, accentTextStyle,
+      ctaRowStyle, ctaPrimaryStyle, ctaGhostStyle,
+      ctaProjectsLabel: isKo ? '프로젝트 보기' : 'View Projects',
+      ctaEmailLabel: isKo ? '연락하기' : 'Get in Touch',
+      goToProjects: () => this.goTo(1),
+      goToContact: () => this.goTo(3),
+      scrollHintStyle, bounceDotStyle, scrollHintLabel: isKo ? '스크롤하여 더보기' : 'Scroll for more',
+      sectionHeadStyle, numeralStyle, sectionTitleStyle, sectionSubStyle,
+      projectsGridStyle, projects, selectedProject, detailHintLabel,
+      overlayBackdropStyle, overlayCardStyle, overlayCloseStyle, closeProject, stopClick,
+      skillsGridStyle, skillCardStyle, skillCatTitleStyle, skillListStyle, skillItemStyle, skillStrongStyle,
+      skillCats: SKILLS_DATA, toolsRowStyle, toolsLabelStyle, toolsTextStyle,
+      contactBoxStyle, contactTitleStyle, contactHighlightStyle, contactLinksStyle, clinkStyle, clinkHoverStyle, clinkLabelStyle, clinkValStyle,
+      footerStyle
+    };
+  }
+}
+
 </script>
 </body>
 </html>
